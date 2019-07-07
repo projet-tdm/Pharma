@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".FormulaireCommande" android:id="@+id/frameLayout"
+        android:background="#FFFFFF">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" android:id="@+id/linv1" android:layout_marginLeft="40sp"
+            android:layout_marginRight="40sp" android:gravity="center_vertical" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/linh1">
+        <TextView
+                android:text="Commander"
+                android:layout_width="wrap_content"
+                android:layout_height="41sp" android:id="@+id/cmd"
+                android:textSize="24sp" android:textColor="@color/titre"
+                android:fontFamily="@font/gothamrounded_medium"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/pharmacie" android:hint="Pharmacie"
+                android:background="@drawable/custom_edittext" android:layout_marginTop="15sp" android:textSize="12sp"
+                android:fontFamily="@font/gothamrounded_book"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="156dp"
+                android:id="@+id/input"
+                android:background="@drawable/custom_edittext" android:layout_marginTop="15sp"
+        />
+        <Button
+                android:text="Lancer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/commander"
+                android:background="@drawable/custom_button"
+                android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="15sp"
+                android:textAllCaps="false"
+                android:elevation="500dp"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="32dp"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/linh1"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

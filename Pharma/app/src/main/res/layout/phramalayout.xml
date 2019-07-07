@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:background="@drawable/rectangle_285_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:id="@+id/linearLayout" tools:layout_editor_absoluteY="81dp">
+    <ImageView android:id="@+id/nopath___copy__4_"
+               android:src="@drawable/nopath___copy__4_"
+               android:contentDescription="nopath___copy__4_"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="8dp"
+               app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+               android:layout_marginLeft="8dp" android:layout_marginStart="8dp"/>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.057"
+            app:layout_constraintStart_toEndOf="@+id/nopath___copy__4_" android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp">
+
+        <TextView android:id="@+id/textView21"
+                  android:fontFamily="@font/gothamrounded_lightitalic"
+                  android:textSize="24sp"
+                  android:textColor="#19769f"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Pharmacie El Bahdja"
+
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintHorizontal_bias="0.735"
+        />
+        <TextView android:id="@+id/textView11"
+                  android:fontFamily="@font/gothamrounded_lightitalic"
+                  android:textSize="14sp"
+                  android:textColor="#51565f"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:drawableLeft="@drawable/trac__105"
+                  android:text="dfffdf"
+                  app:layout_constraintTop_toBottomOf="@+id/textView21"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintHorizontal_bias="1.0"
+        />
+        <TextView android:id="@+id/textView12"
+                  android:fontFamily="@font/gothamrounded_bold"
+                  android:textSize="14sp"
+                  android:textColor="#51565f"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="07 77 77 77 "
+                  android:drawableLeft="@drawable/images"
+                  app:layout_constraintTop_toBottomOf="@+id/textView11"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintHorizontal_bias="0.334"
+        />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

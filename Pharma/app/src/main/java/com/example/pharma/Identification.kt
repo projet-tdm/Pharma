@@ -58,12 +58,13 @@ class Identification : Fragment() {
             }
             else {
                 // Permission has already been granted
-                startActivity(intentFor<MapsActivity>())
-                startActivity<MapsActivity>(
+                //startActivity(intentFor<MapsActivity>())
+               /* startActivity<MapsActivity>(
                     "job" to 1,
                     "lat" to 35.680,
                     "long" to -0.639
-            )
+            )*/
+            view?.findNavController()?.navigate(R.id.action_identification_to_pharmacies)
             }
         }
     }
