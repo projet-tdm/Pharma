@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/graph"
+            app:startDestination="@id/identification">
+
+    <fragment android:id="@+id/identification" android:name="com.example.pharma.Identification"
+              android:label="fragment_identification" tools:layout="@layout/fragment_identification">
+        <action android:id="@+id/action_identification_to_inscription" app:destination="@+id/inscription"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_identification_to_forgot" app:destination="@id/forgot"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment android:id="@+id/inscription" android:name="com.example.pharma.Inscription"
+              android:label="fragment_inscription" tools:layout="@layout/fragment_inscription">
+        <action android:id="@+id/action_inscription_to_identification" app:destination="@id/identification"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment android:id="@+id/forgot" android:name="com.example.pharma.forgot" android:label="fragment_forgot"
+              tools:layout="@layout/fragment_forgot">
+        <action android:id="@+id/action_forgot_to_identification" app:destination="@id/identification"/>
+    </fragment>
+</navigation>

@@ -1,11 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
+        <item name="android:fontFamily">@font/gothamrounded_medium</item>
+        <!-- Material Design Dialog -->
+        <item name="md_corner_radius">16dp</item>
+        <item name="md_color_button_text">#FF19769F</item>
+        <item name="md_font_body">@font/gothamrounded_light</item>
+        <item name="md_font_button">@font/gothamrounded_bold</item>
 
+    </style>
 </resources>
