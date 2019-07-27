@@ -39,6 +39,6 @@
                 android:background="@drawable/custom_button"
                 android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="30dp"
                 android:textAllCaps="false"
-                android:elevation="500dp"/>
+                android:elevation="500dp" style="@style/Widget.AppCompat.Button"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
