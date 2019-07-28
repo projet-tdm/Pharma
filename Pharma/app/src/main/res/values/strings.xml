@@ -11,6 +11,9 @@
     <string name="title_activity_maps">Map</string>
     <string name="ok">OK</string>
     <string name="pharma">Pharmacies</string>
+    <string name="pharmaTitle">Pharmacies</string>
     <string name="garde">En garde</string>
     <string name="cmd">Commandes</string>
+    <string name="horaire">HORAIRE</string>
+
 </resources>

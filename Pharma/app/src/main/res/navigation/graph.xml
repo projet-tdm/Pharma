@@ -32,6 +32,7 @@
     <fragment android:id="@+id/detailPharma" android:name="com.example.pharma.DetailPharma"
               android:label="fragment_detail_pharma" tools:layout="@layout/fragment_detail_pharma">
         <action android:id="@+id/action_detailPharma_to_commandeFragment" app:destination="@id/commandeFragment"/>
+        <action android:id="@+id/action_detailPharma_to_pharmacies" app:destination="@id/pharmacies"/>
     </fragment>
     <fragment android:id="@+id/pharmacies" android:name="com.example.pharma.Pharmacies"
               android:label="fragment_pharmacies" tools:layout="@layout/fragment_pharmacies">

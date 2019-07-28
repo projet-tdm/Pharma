@@ -4,4 +4,13 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="titre">#19769F</color>
+    <color name="titre2">#51565f</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorPrimaryTint">#FFFFFF</color>
+    <color name="colorLightGrey">#f1f8e9</color>
+    <color name="grey">#C9C2C4</color>
+    <color name="annul">#5DF6C7</color>
+    <color name="cours">#43C6AC</color>
+    <color name="traite">#166E95</color>
+
 </resources>

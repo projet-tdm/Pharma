@@ -21,16 +21,17 @@ class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapt
         if (view == null) {
             view = LayoutInflater.from(ctx).inflate(R.layout.phramalayout,parent,false)
             val textView = view.findViewById(R.id.textView11) as TextView
-           val textView2 = view?.findViewById(R.id.textView12) as TextView
+            val textView2 = view?.findViewById(R.id.textView12) as TextView
+            val textView3 = view?.findViewById(R.id.textView21) as TextView
 
-
-           holder = ViewHolder(textView,textView2)
+           holder = ViewHolder(textView,textView2,textView3)
             view?.setTag(holder)
         }
         else {
             holder = view.tag as ViewHolder
 
         }
+        holder.textView3.setText(data.get(i).nom)
         holder.textView.setText(data.get(i).adresse)
        /* holder.imageView.setImageResource(data.get(i).image)*/
         holder.textView2.text = data.get(i).tel
@@ -52,5 +53,5 @@ class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapt
            return view
        }
        */
-    private class ViewHolder(val textView:TextView,val textView2:TextView)
+    private class ViewHolder(val textView:TextView,val textView2:TextView,val textView3:TextView)
 }

@@ -1,6 +1,9 @@
 package com.example.pharma
 
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +12,6 @@ import android.view.ViewGroup
 
 import kotlinx.android.synthetic.main.fragment_detail_pharma.*
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,17 +39,56 @@ class DetailPharma : Fragment() {
         val amount = arguments!!.getInt("id")
         val pharmacie = vm.list.get(amount)
         textView22.text=pharmacie.adresse
-
-        textView9.text=pharmacie.horaireOv.get(0)+"-"+pharmacie.horaireFerm.get(0)
+        textView21.text=pharmacie.nom
         textView4.text=pharmacie.cassConv
-        textView10.text=pharmacie.horaireOv.get(1)+" - "+pharmacie.horaireFerm.get(1)
-        textView13.text=pharmacie.horaireOv.get(2)+" - "+pharmacie.horaireFerm.get(2)
-        textView14.text=pharmacie.horaireOv.get(3)+" - "+pharmacie.horaireFerm.get(3)
-        textView15.text=pharmacie.horaireOv.get(4)+" - "+pharmacie.horaireFerm.get(4)
-        textView16.text=pharmacie.horaireOv.get(5)+" - "+pharmacie.horaireFerm.get(5)
-        button5.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_detailPharma_to_commandeFragment)
+        textView9.text="Dimanche       "+ pharmacie.horaireOv.get(0)+" - "+pharmacie.horaireFerm.get(0)
+        textView10.text="Lundi              "+ pharmacie.horaireOv.get(1)+" - "+pharmacie.horaireFerm.get(1)
+        textView13.text="Mardi              " + pharmacie.horaireOv.get(2)+" - "+pharmacie.horaireFerm.get(2)
+        textView14.text="Mercredi         "+ pharmacie.horaireOv.get(3)+" - "+pharmacie.horaireFerm.get(3)
+        textView15.text="Jeudi              "+ pharmacie.horaireOv.get(4)+" - "+pharmacie.horaireFerm.get(4)
+        textView16.text="Vendredi        "+ pharmacie.horaireOv.get(5)+" - "+pharmacie.horaireFerm.get(5)
+        textView17.text="Samedi          "+ pharmacie.horaireOv.get(6)+" - "+pharmacie.horaireFerm.get(6)
+        button.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_detailPharma_to_pharmacies)
         }
+        phone.setOnClickListener {
+            makeCall("0797221310")
+        }
+        fb.setOnClickListener {
+            goToFacebook("ZOGHBIissam")
+        }
+        loc.setOnClickListener {
+            goToMap("geo:0,0?q=-33.8666,151.1957(Google+Sydney)")
+        }
+
+
+    }
+    private fun goToFacebook (id:String )
+    {
+        try{
+            val intent=Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/"+id))
+            startActivity(intent)
+
+        }
+        catch(e : ActivityNotFoundException )
+        {
+            val intent=Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/"+id))
+            startActivity(intent)
+        }
+    }
+    private fun goToMap (id:String )
+    {
+        val gmmIntentUri = Uri.parse(id)
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
+
+    }
+    private fun makeCall (id:String )
+    {
+        val callIntent = Intent(Intent.ACTION_CALL)
+        callIntent.data = Uri.parse("tel:" + id)//change the number
+        startActivity(callIntent)
 
     }
 

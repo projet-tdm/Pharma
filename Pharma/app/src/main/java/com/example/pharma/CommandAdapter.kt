@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources.getColorStateList
+import com.google.android.material.chip.Chip
 
 
 class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
@@ -23,9 +25,9 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
 
             val textView3 = view?.findViewById(R.id.pharma) as TextView
             val textView4 = view?.findViewById(R.id.textView24) as TextView
+            val chip = view?.findViewById(R.id.chip2) as Chip
 
-
-            holder = ViewHolder(textView,textView3,textView4)
+            holder = ViewHolder(textView,textView3,textView4,chip)
             view?.setTag(holder)
         }
         else {
@@ -34,27 +36,19 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
         }
         holder.textView.setText("Commande "+data.get(i).numero.toString())
         /* holder.imageView.setImageResource(data.get(i).image)*/
+        when (data.get(i).etat) {
+            "A"-> holder.chip.setChipBackgroundColorResource(R.color.annul)
+            "T"-> holder.chip.setChipBackgroundColorResource(R.color.traite)
+           "C"-> holder.chip.setChipBackgroundColorResource(R.color.cours)
 
-        holder.textView3.setText(data.get(i).pharma.adresse)
+
+        }
+        holder.textView3.setText(data.get(i).pharma.nom)
         /* holder.imageView.setImageResource(data.get(i).image)*/
         holder.textView4.text = data.get(i).date
         return view
     }
 
-    /*
-       override fun getView(i: Int, p0: View?, parent: ViewGroup?): View {
-           var view = p0
-           if (view == null) {
-               view = LayoutInflater.from(ctx).inflate(R.layout.mylayout, parent, false)
 
-           }
-           val textView = view?.findViewById(R.id.textView) as TextView
-           val imageView = view?.findViewById(R.id.imageView) as ImageView
-           Toast.makeText(ctx,"message $i",Toast.LENGTH_SHORT).show()
-           textView.setText(data.get(i).firstName)
-           imageView.setImageResource(data.get(i).image)
-           return view
-       }
-       */
-    private class ViewHolder(val textView:TextView,val textView3:TextView,val textView4:TextView)
+    private class ViewHolder(val textView:TextView,val textView3:TextView,val textView4:TextView,val chip:Chip)
 }

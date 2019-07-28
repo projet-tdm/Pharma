@@ -23,8 +23,9 @@ class Pharmacies : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_pharmacies, container, false)
 
-
+        setHasOptionsMenu(true)
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 

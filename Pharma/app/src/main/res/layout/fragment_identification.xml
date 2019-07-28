@@ -47,10 +47,10 @@
                 android:text="Se connecter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/connexion_btn"
-                android:background="@drawable/custom_button"
                 android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="15sp"
                 android:textAllCaps="false"
-                android:elevation="500dp"/>
+                android:elevation="500dp" android:background="@drawable/custom_button"
+        />
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
