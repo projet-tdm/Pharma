@@ -15,5 +15,10 @@
     <string name="garde">En garde</string>
     <string name="cmd">Commandes</string>
     <string name="horaire">HORAIRE</string>
-
+    <string name="A">Annulée</string>
+    <string name="T">Traitée</string>
+    <string name="C">En cours</string>
+    <string name="hr">Horaire</string>
+    <string name="comm">Commander</string>
+    <string name="lan">Lancer la commande</string>
 </resources>

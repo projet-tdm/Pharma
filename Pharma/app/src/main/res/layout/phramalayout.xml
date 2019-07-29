@@ -7,14 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" android:id="@+id/view1"
         tools:layout_editor_absoluteY="-8dp" tools:layout_editor_absoluteX="-64dp"
-        app:cardElevation="@dimen/md_action_button_corner_radius">
+        app:cardElevation="8dp" app:cardCornerRadius="8dp">
     <androidx.constraintlayout.widget.ConstraintLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-             android:layout_height="wrap_content" android:id="@+id/linearLayout" tools:layout_editor_absoluteY="81dp"
-           >
+            android:layout_height="wrap_content" android:id="@+id/linearLayout" tools:layout_editor_absoluteY="81dp"
+    >
 
 
         <ImageView android:id="@+id/nopath___copy__4_"

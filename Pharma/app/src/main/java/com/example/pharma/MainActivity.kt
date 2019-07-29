@@ -8,6 +8,10 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
+
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -34,7 +38,33 @@ class MainActivity : AppCompatActivity() {
 
     }
     private fun showBottomNav() {
+
         bottomNav.visibility = View.VISIBLE
+        /*bottomNav.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.map-> {
+                    // Permission has already been granted
+                    startActivity(intentFor<MapsActivity>())
+                     startActivity<MapsActivity>(
+                         "job" to 1,
+                         "lat" to 35.680,
+                         "long" to -0.639
+                 )
+                }
+                R.id.pharmacies-> {
+                     val fragment = Pharmacies()
+
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.fragment, fragment)
+                    transaction.commit()
+
+                }
+
+            }
+            return@setOnNavigationItemSelectedListener true
+        }*/
+
+
 
     }
     private fun hideBottomNav() {

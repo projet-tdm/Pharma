@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_detail_pharma.*
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import kotlinx.android.synthetic.main.horairelayout.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,13 +42,13 @@ class DetailPharma : Fragment() {
         textView22.text=pharmacie.adresse
         textView21.text=pharmacie.nom
         textView4.text=pharmacie.cassConv
-        textView9.text="Dimanche       "+ pharmacie.horaireOv.get(0)+" - "+pharmacie.horaireFerm.get(0)
-        textView10.text="Lundi              "+ pharmacie.horaireOv.get(1)+" - "+pharmacie.horaireFerm.get(1)
-        textView13.text="Mardi              " + pharmacie.horaireOv.get(2)+" - "+pharmacie.horaireFerm.get(2)
-        textView14.text="Mercredi         "+ pharmacie.horaireOv.get(3)+" - "+pharmacie.horaireFerm.get(3)
-        textView15.text="Jeudi              "+ pharmacie.horaireOv.get(4)+" - "+pharmacie.horaireFerm.get(4)
-        textView16.text="Vendredi        "+ pharmacie.horaireOv.get(5)+" - "+pharmacie.horaireFerm.get(5)
-        textView17.text="Samedi          "+ pharmacie.horaireOv.get(6)+" - "+pharmacie.horaireFerm.get(6)
+        textView9.text="Dimanche              "+ pharmacie.horaireOv.get(0)+" - "+pharmacie.horaireFerm.get(0)
+        textView10.text="Lundi                     "+ pharmacie.horaireOv.get(1)+" - "+pharmacie.horaireFerm.get(1)
+        textView13.text="Mardi                     " + pharmacie.horaireOv.get(2)+" - "+pharmacie.horaireFerm.get(2)
+        textView14.text="Mercredi                "+ pharmacie.horaireOv.get(3)+" - "+pharmacie.horaireFerm.get(3)
+        textView15.text="Jeudi                     "+ pharmacie.horaireOv.get(4)+" - "+pharmacie.horaireFerm.get(4)
+        textView16.text="Vendredi               "+ pharmacie.horaireOv.get(5)+" - "+pharmacie.horaireFerm.get(5)
+        textView17.text="Samedi                 "+ pharmacie.horaireOv.get(6)+" - "+pharmacie.horaireFerm.get(6)
         button.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_detailPharma_to_pharmacies)
         }

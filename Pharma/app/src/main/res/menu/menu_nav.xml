@@ -16,7 +16,7 @@
 
 
     <item
-            android:id="@+id/formulaireCommande"
+            android:id="@+id/mapsActivity"
             android:title="@string/garde"
             android:icon="@drawable/ic_add_location_black_24dp"
 

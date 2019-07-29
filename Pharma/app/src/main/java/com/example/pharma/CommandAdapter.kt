@@ -5,11 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import com.google.android.material.chip.Chip
 
 
+
+
+
+
 class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
+
+
     override fun getItem(p0: Int)= data.get(p0)
 
     override fun getItemId(p0: Int) = data.get(p0).hashCode().toLong()
@@ -46,6 +51,9 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
         holder.textView3.setText(data.get(i).pharma.nom)
         /* holder.imageView.setImageResource(data.get(i).image)*/
         holder.textView4.text = data.get(i).date
+
+
+
         return view
     }
 
