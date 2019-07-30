@@ -31,4 +31,22 @@
               tools:layout="@layout/fragment_renew"/>
     <fragment android:id="@+id/mapFragment" android:name="com.example.pharma.mapFragment" android:label="fragment_map"
               tools:layout="@layout/fragment_map"/>
+    <fragment android:id="@+id/commandeFragment" android:name="com.example.pharma.CommandeFragment"
+              android:label="fragment_commande" tools:layout="@layout/fragment_commande">
+        <action android:id="@+id/action_commandeFragment_to_formulaireCommande"
+                app:destination="@id/formulaireCommande"/>
+    </fragment>
+    <fragment android:id="@+id/detailPharma" android:name="com.example.pharma.DetailPharma"
+              android:label="fragment_detail_pharma" tools:layout="@layout/fragment_detail_pharma">
+        <action android:id="@+id/action_detailPharma_to_commandeFragment" app:destination="@id/commandeFragment"/>
+        <action android:id="@+id/action_detailPharma_to_pharmacies" app:destination="@id/pharmacies"/>
+    </fragment>
+    <fragment android:id="@+id/pharmacies" android:name="com.example.pharma.Pharmacies"
+              android:label="fragment_pharmacies" tools:layout="@layout/fragment_pharmacies">
+        <action android:id="@+id/action_pharmacies_to_detailPharma" app:destination="@id/detailPharma"/>
+    </fragment>
+    <fragment android:id="@+id/formulaireCommande" android:name="com.example.pharma.FormulaireCommande"
+              android:label="fragment_formulaire_commande" tools:layout="@layout/fragment_formulaire_commande">
+        <action android:id="@+id/action_formulaireCommande_to_commandeFragment" app:destination="@id/commandeFragment"/>
+    </fragment>
 </navigation>
