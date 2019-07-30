@@ -1,17 +1,47 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+       <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/gothamrounded_medium</item>
         <!-- Material Design Dialog -->
         <item name="md_corner_radius">16dp</item>
         <item name="md_color_button_text">#FF19769F</item>
         <item name="md_font_body">@font/gothamrounded_light</item>
         <item name="md_font_button">@font/gothamrounded_bold</item>
-
+    </style>
+    <style name="textInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+    <style name="editTextStyle" >
+        <item name="android:textSize">15sp</item>
+        <item name="android:fontFamily">@font/gothamrounded_book</item>
+    </style>
+    <style name="buttonStyle" parent="@style/Widget.MaterialComponents.Button">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:height">55dp</item>
+    </style>
+    <style name="verticalLayoutStyle">
+        <item name="android:layout_marginLeft">40dp</item>
+        <item name="android:layout_marginRight">40dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="horizontalLayoutStyle">
+        <item name="android:layout_marginBottom">32dp</item>
+    </style>
+    <style name="fragmentTitleStyle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/titre</item>
+    </style>
+    <style name="fragmentBottomLinkStyle">
+        <item name="android:textColor">#19769F</item>
+    </style>
+    <style name="messageStyle">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/gothamrounded_light</item>
     </style>
 </resources>

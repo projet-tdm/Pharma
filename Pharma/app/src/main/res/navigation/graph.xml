@@ -12,6 +12,10 @@
         <action android:id="@+id/action_identification_to_forgot" app:destination="@id/forgot"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_identification_to_renew" app:destination="@id/renew"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action android:id="@+id/action_identification_to_mapFragment" app:destination="@id/mapFragment"/>
     </fragment>
     <fragment android:id="@+id/inscription" android:name="com.example.pharma.Inscription"
               android:label="fragment_inscription" tools:layout="@layout/fragment_inscription">
@@ -23,4 +27,8 @@
               tools:layout="@layout/fragment_forgot">
         <action android:id="@+id/action_forgot_to_identification" app:destination="@id/identification"/>
     </fragment>
+    <fragment android:id="@+id/renew" android:name="com.example.pharma.renew" android:label="fragment_renew"
+              tools:layout="@layout/fragment_renew"/>
+    <fragment android:id="@+id/mapFragment" android:name="com.example.pharma.mapFragment" android:label="fragment_map"
+              tools:layout="@layout/fragment_map"/>
 </navigation>

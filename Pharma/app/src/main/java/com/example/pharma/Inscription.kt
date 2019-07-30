@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -62,20 +63,22 @@ class Inscription :  Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_inscription, container, false)
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         signin_textView.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_inscription_to_identification)
         }
-        signup_btn.setOnClickListener{ view ->
+        signup_btn.setOnClickListener { view ->
             MaterialDialog(context!!).show {
-                    message(R.string.signup_btn_msg)
-                    positiveButton(R.string.ok) {
-                        view.findNavController().navigate(R.id.action_inscription_to_identification)
-                    }
+                message(R.string.signup_btn_msg)
+                positiveButton(R.string.ok) {
+                    view.findNavController().navigate(R.id.action_inscription_to_identification)
+                }
                 onCancel {
                     view.findNavController().navigate(R.id.action_inscription_to_identification)
                 }
+
 
             }
         }
