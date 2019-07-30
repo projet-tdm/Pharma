@@ -40,6 +40,8 @@ class Identification : Fragment() {
             view.findNavController().navigate(R.id.action_identification_to_forgot)
         }
         connexion_btn.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_identification_to_pharmacies)
+
         }
     }
 }

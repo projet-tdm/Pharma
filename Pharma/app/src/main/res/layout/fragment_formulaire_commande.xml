@@ -21,14 +21,18 @@
                 android:layout_height="41sp" android:id="@+id/cmd"
                 android:textSize="24sp" android:textColor="@color/titre"
                 android:fontFamily="@font/gothamrounded_medium"/>
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:ems="10"
-                android:id="@+id/pharmacie" android:hint="Pharmacie"
-                android:background="@drawable/custom_edittext" android:layout_marginTop="15sp" android:textSize="12sp"
-                android:fontFamily="@font/gothamrounded_book"/>
+                android:layout_height="wrap_content" android:id="@+id/pharmacie"
+                style="@style/textInputLayoutStyle"
+                android:hint="Pharmacie">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    style="@style/editTextStyle"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
         <ImageButton
                 android:src="@android:drawable/ic_menu_upload"
                 android:layout_width="match_parent"
@@ -40,14 +44,11 @@
 
                 android:background="@drawable/custom_edittext" android:layout_marginTop="15sp"
         />
-        <Button
+        <com.google.android.material.button.MaterialButton
+                style="@style/buttonStyle"
                 android:text="@string/lan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/commander"
-                android:background="@drawable/custom_button"
-                android:textColor="#FFFFFF" android:textStyle="bold" android:layout_marginTop="15sp"
-                android:textAllCaps="false"
-                android:elevation="500dp"/>
+                android:layout_height="wrap_content" android:id="@+id/commander"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
