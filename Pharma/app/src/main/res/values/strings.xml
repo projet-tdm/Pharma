@@ -7,6 +7,18 @@
         de passe.
     </string>
     <string name="signup_btn_msg">Nous venons tout juste de vous envoyer votre mot de passe par SMS.</string>
+    <string name="cmd_btn_msg">Votre commande est lancer avec sucess.</string>
     <string name="title_activity_maps">Map</string>
     <string name="ok">OK</string>
+    <string name="pharma">Pharmacies</string>
+    <string name="pharmaTitle">Pharmacies</string>
+    <string name="garde">En garde</string>
+    <string name="cmd">Commandes</string>
+    <string name="horaire">HORAIRE</string>
+    <string name="A">Annulée</string>
+    <string name="T">Traitée</string>
+    <string name="C">En cours</string>
+    <string name="hr">Horaire</string>
+    <string name="comm">Commander</string>
+    <string name="lan">Lancer la commande</string>
 </resources>

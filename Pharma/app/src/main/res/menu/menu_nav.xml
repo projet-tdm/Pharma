@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/pharmacies"
+            android:title="@string/pharma"
+            android:icon="@drawable/ic_local_pharmacy_black_24dp"
+    />
+
+
+    <item
+            android:id="@+id/commandeFragment"
+            android:title="@string/cmd"
+            android:icon="@drawable/ic_add_shopping_cart_black_24dp"
+    />
+
+
+    <item
+            android:id="@+id/mapsActivity"
+            android:title="@string/garde"
+            android:icon="@drawable/ic_add_location_black_24dp"
+
+    />
+
+
+</menu>
