@@ -37,7 +37,7 @@ class Identification : Fragment() {
             view.findNavController().navigate(R.id.action_identification_to_inscription)
         }
         forgot_textView.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.action_identification_to_mapFragment)
+            view.findNavController().navigate(R.id.action_identification_to_forgot)
         }
         connexion_btn.setOnClickListener {
         }
