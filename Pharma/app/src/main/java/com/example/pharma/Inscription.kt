@@ -16,9 +16,13 @@ import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
 import com.afollestad.materialdialogs.customview.customView
+import com.twilio.Twilio
 import kotlinx.android.synthetic.main.fragment_inscription.*
 import kotlin.math.sign
-
+/*rt com.twilio.Twilio
+import com.twilio.rest.api.v2010.account.Message
+import com.twilio.type.PhoneNumber
+*/
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,6 +74,16 @@ class Inscription :  Fragment() {
             view.findNavController().navigate(R.id.action_inscription_to_identification)
         }
         signup_btn.setOnClickListener { view ->
+            /*
+            Twilio.init(
+                "ACaa5f1ea18f2df0d7044e4d66ea7a4626",
+            "c89288a5a3a0466ea749fe1d264a1516"
+            )
+            val message =  Message.creator(
+                PhoneNumber("+14388204705"),
+                PhoneNumber("+14387718110"),
+                "Ahoy from Twilio"
+            ).create()*/
             MaterialDialog(context!!).show {
                 message(R.string.signup_btn_msg)
                 positiveButton(R.string.ok) {

@@ -39,7 +39,8 @@ class Identification : Fragment() {
         forgot_textView.setOnClickListener { view ->
             view.findNavController().navigate(R.id.action_identification_to_forgot)
         }
-        connexion_btn.setOnClickListener {
+        connexion_btn.setOnClickListener {view ->
+            view.findNavController().navigate(R.id.action_identification_to_pharmacies)
         }
     }
 }

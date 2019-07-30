@@ -16,6 +16,7 @@
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action android:id="@+id/action_identification_to_mapFragment" app:destination="@id/mapFragment"/>
+        <action android:id="@+id/action_identification_to_pharmacies" app:destination="@id/pharmacies"/>
     </fragment>
     <fragment android:id="@+id/inscription" android:name="com.example.pharma.Inscription"
               android:label="fragment_inscription" tools:layout="@layout/fragment_inscription">

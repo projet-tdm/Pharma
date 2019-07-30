@@ -93,10 +93,16 @@ class mapFragment : Fragment(),OnMapReadyCallback {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val v = inflater.inflate(R.layout.fragment_map, container, false)
+
+        return v
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
-        return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
 
