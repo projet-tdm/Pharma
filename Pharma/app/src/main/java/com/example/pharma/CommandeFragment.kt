@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.example.pharma.Entity.Commande
+import com.example.pharma.Entity.Pharmacie
+import com.example.pharma.ListAdapter.CommandeAdapter
 import kotlinx.android.synthetic.main.fragment_commande.*
 import java.util.ArrayList
 
@@ -24,7 +27,7 @@ class CommandeFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-        val adapter = CommandeAdapter(context!!,getData())
+        val adapter = CommandeAdapter(context!!, getData())
         listcmd.adapter = adapter
         add.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_commandeFragment_to_formulaireCommande)
@@ -34,9 +37,19 @@ class CommandeFragment : Fragment() {
     private fun getData(): ArrayList<Commande> {
         val ouv= mutableListOf<String>("8:00","8:00","8:00","8:00","8:00","8:00","8:00")
         val fer= mutableListOf<String>("00:00","00:00","00:00","00:00","00:00","00:00","00:00")
-        val pharma=Pharmacie("Pharmacie el Bahdja","cité 400 logement rue 24","023", arrayListOf(),"conv","facebok","sétif",ouv,fer)
+        val pharma= Pharmacie(
+            "Pharmacie el Bahdja",
+            "cité 400 logement rue 24",
+            "023",
+            arrayListOf(),
+            "conv",
+            "facebok",
+            "sétif",
+            ouv,
+            fer
+        )
 
-        val cmd=Commande(1,R.drawable.ic_launcher_background,"T",pharma,"12/06/2019")
+        val cmd= Commande(1, R.drawable.ic_launcher_background, "T", pharma, "12/06/2019")
 
         val list = ArrayList<Commande>()
 

@@ -1,10 +1,12 @@
-package com.example.pharma
+package com.example.pharma.ListAdapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.example.pharma.Entity.Commande
+import com.example.pharma.R
 import com.google.android.material.chip.Chip
 
 
@@ -23,17 +25,17 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
 
     override fun getView(i: Int, p0: View?, parent: ViewGroup?): View {
         var view = p0
-        var holder:ViewHolder
+        var holder: ViewHolder
         if (view == null) {
             view = LayoutInflater.from(ctx).inflate(R.layout.cmdlayout,parent,false)
             val textView = view?.findViewById(R.id.textView7) as TextView
 
-            val textView3 = view?.findViewById(R.id.pharma) as TextView
-            val textView4 = view?.findViewById(R.id.textView24) as TextView
-            val chip = view?.findViewById(R.id.chip2) as Chip
+            val textView3 = view.findViewById(R.id.pharma) as TextView
+            val textView4 = view.findViewById(R.id.textView24) as TextView
+            val chip = view.findViewById(R.id.chip2) as Chip
 
-            holder = ViewHolder(textView,textView3,textView4,chip)
-            view?.setTag(holder)
+            holder = ViewHolder(textView, textView3, textView4, chip)
+            view.setTag(holder)
         }
         else {
             holder = view.tag as ViewHolder

@@ -1,12 +1,12 @@
-package com.example.pharma
+package com.example.pharma.ListAdapter
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import com.example.pharma.Entity.Pharmacie
+import com.example.pharma.R
 
 class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapter() {
     override fun getItem(p0: Int)= data.get(p0)
@@ -17,15 +17,15 @@ class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapt
 
     override fun getView(i: Int, p0: View?, parent: ViewGroup?): View {
         var view = p0
-        var holder:ViewHolder
+        var holder: ViewHolder
         if (view == null) {
             view = LayoutInflater.from(ctx).inflate(R.layout.phramalayout,parent,false)
             val textView = view.findViewById(R.id.textView11) as TextView
             val textView2 = view?.findViewById(R.id.textView12) as TextView
-            val textView3 = view?.findViewById(R.id.textView21) as TextView
+            val textView3 = view.findViewById(R.id.textView21) as TextView
 
-           holder = ViewHolder(textView,textView2,textView3)
-            view?.setTag(holder)
+           holder = ViewHolder(textView, textView2, textView3)
+            view.setTag(holder)
         }
         else {
             holder = view.tag as ViewHolder

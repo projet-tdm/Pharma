@@ -73,7 +73,7 @@ class FormulaireCommande : Fragment() {
         pictureDialog.setTitle("Select Action")
         val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
         pictureDialog.setItems(pictureDialogItems
-        ) { dialog, which ->
+        ) {_, which ->
             when (which) {
                 0 -> choosePhotoFromGallary()
                 1 -> takePhotoFromCamera()
@@ -105,11 +105,11 @@ class FormulaireCommande : Fragment() {
         {
             if (data != null)
             {
-                val contentURI = data!!.data
+                val contentURI = data.data
                 try
                 {
                     val bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
-                    val path = saveImage(bitmap)
+                    saveImage(bitmap)
                     Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
                     input.setImageBitmap(bitmap)
 

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_detail_pharma.*
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.example.pharma.Entity.MyModel
 import kotlinx.android.synthetic.main.horairelayout.*
 
 // TODO: Rename parameter arguments, choose names that match
