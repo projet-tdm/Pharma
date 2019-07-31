@@ -28,9 +28,15 @@ class Pharmacies : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val vm= ViewModelProviders.of(activity!!).get(MyModel::class.java)
-        val adapter = CustomAdapterPharmacie(context!!, vm.list)
-        listpharmacie.adapter = adapter
+        val pharmaModel = ViewModelProviders.of(activity!!).get(MyModel::class.java)
+        // If the list of cities is null, load the list from DB
+        if (pharmaModel.list==null) {
+            pharmaModel.loadData(activity!!)
+        }
+        else {
+            // After the rotation of the screen, use cities of the ViewModel instance
+            listpharmacie.adapter = CustomAdapterPharmacie(activity!!,pharmaModel.list!!)
+        }
         listpharmacie.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
 
             var bundle = Bundle()

@@ -35,18 +35,19 @@ class CommandeFragment : Fragment() {
 
     }
     private fun getData(): ArrayList<Commande> {
-        val ouv= mutableListOf<String>("8:00","8:00","8:00","8:00","8:00","8:00","8:00")
-        val fer= mutableListOf<String>("00:00","00:00","00:00","00:00","00:00","00:00","00:00")
+        val ouv= "hh"
+        val fer= "hh"
         val pharma= Pharmacie(
-            "Pharmacie el Bahdja",
+            1,
             "cité 400 logement rue 24",
             "023",
-            arrayListOf(),
+
             "conv",
             "facebok",
             "sétif",
-            ouv,
-            fer
+            "hh",
+            "hh",
+                    "hh",1,"hi"
         )
 
         val cmd= Commande(1, R.drawable.ic_launcher_background, "T", pharma, "12/06/2019")
