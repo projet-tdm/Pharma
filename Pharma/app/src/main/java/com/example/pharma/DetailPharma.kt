@@ -58,13 +58,13 @@ class DetailPharma : Fragment() {
             view?.findNavController()?.navigate(R.id.action_detailPharma_to_pharmacies)
         }
         phone.setOnClickListener {
-            makeCall("0797221310")
+            makeCall(pharmacie!!.tel)
         }
         fb.setOnClickListener {
-            goToFacebook("ZOGHBIissam")
+            goToFacebook(pharmacie!!.facebook)
         }
         loc.setOnClickListener {
-            goToMap("geo:0,0?q=-33.8666,151.1957(Google+Sydney)")
+            goToMap(pharmacie!!.location)
         }
 
 

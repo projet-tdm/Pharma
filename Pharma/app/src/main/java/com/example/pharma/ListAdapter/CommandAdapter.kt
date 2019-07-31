@@ -50,7 +50,7 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>):BaseAdapter() {
 
 
         }
-        holder.textView3.setText(data.get(i).pharma.nom)
+        holder.textView3.setText(data.get(i).pharma.toString())
         /* holder.imageView.setImageResource(data.get(i).image)*/
         holder.textView4.text = data.get(i).date
 
