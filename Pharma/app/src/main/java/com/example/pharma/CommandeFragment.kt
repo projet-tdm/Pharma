@@ -33,12 +33,10 @@ class CommandeFragment : Fragment() {
 
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
 
-        if (cmdModel.list==null) {
-            cmdModel.loadData(activity!!)
-        }
-        else {
-             listcmd.adapter = CommandeAdapter(activity!!,cmdModel.list!!)
-        }
+             cmdModel.loadData(activity!!)
+
+             //listcmd.adapter = CommandeAdapter(activity!!,cmdModel.list!!)
+
 
 
 

@@ -25,7 +25,6 @@ class MyModel: ViewModel() {
         if (list?.size == 0) {
             // If the list of cities is empty, load from server and save them in SQLite DB
             getPharmaciesFromRemote(act)
-            act.progressBar.visibility = View.GONE
 
         }
         else {

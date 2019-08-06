@@ -20,11 +20,8 @@ class CmdModel: ViewModel() {
 
 
     fun loadData(act: Activity) {
-         act.progressBar2.visibility = View.VISIBLE
-
-
+        act.progressBar2.visibility = View.VISIBLE
         getCommandesFromRemote(act)
-        act.progressBar.visibility = View.GONE
 
 
     }

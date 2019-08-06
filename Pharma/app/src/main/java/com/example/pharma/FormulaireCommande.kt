@@ -4,38 +4,39 @@ package com.example.pharma
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
-import android.media.MediaScannerConnection
-import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.util.Log
+ import android.os.Bundle
+ import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+  import android.widget.Toast
+ import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
-import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
-import kotlinx.android.synthetic.main.fragment_inscription.*
-import kotlinx.android.synthetic.main.fragment_pharmacies.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
+import com.example.pharma.Entity.MyResponse
+ import com.example.pharma.Retrofit.RetrofitServiceUpload
+ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import org.jetbrains.anko.support.v4.toast
+ import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+ import java.io.File
 import java.io.IOException
-import java.util.*
-
+import android.graphics.BitmapFactory
+import android.util.Base64
+import okhttp3.ResponseBody
+import java.io.ByteArrayOutputStream
 
 
 class FormulaireCommande : Fragment() {
 
     private val GALLERY = 1
     private val CAMERA = 2
+    private var bitmap = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -94,7 +95,7 @@ class FormulaireCommande : Fragment() {
         startActivityForResult(intent, CAMERA)
     }
 
-    public override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
+     override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
 
         super.onActivityResult(requestCode, resultCode, data)
         /* if (resultCode == this.RESULT_CANCELED)
@@ -109,9 +110,13 @@ class FormulaireCommande : Fragment() {
                 try
                 {
                     val bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
-                    saveImage(bitmap)
-                    Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
+                    addCommande(bitmap)
+
+                    Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_LONG).show()
+
                     input.setImageBitmap(bitmap)
+
+
 
                 }
                 catch (e: IOException) {
@@ -125,52 +130,57 @@ class FormulaireCommande : Fragment() {
         else if (requestCode == CAMERA)
         {
             val thumbnail = data!!.extras!!.get("data") as Bitmap
+            addCommande(thumbnail)
+
             input.setImageBitmap(thumbnail)
-            saveImage(thumbnail)
             Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun saveImage(myBitmap: Bitmap):String {
-        val bytes = ByteArrayOutputStream()
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
-        val wallpaperDirectory = File(
-            (Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
-        // have the object build the directory structure, if needed.
-        Log.d("fee",wallpaperDirectory.toString())
-        if (!wallpaperDirectory.exists())
-        {
+private fun ImageToString(bitmap:Bitmap):String
+{
+    var str =ByteArrayOutputStream()
+    var bitmapC=getResizedBitmap(bitmap,700)
+    bitmapC.compress(Bitmap.CompressFormat.JPEG,100,str)
+    return Base64.encodeToString(str.toByteArray(),Base64.DEFAULT)
 
-            wallpaperDirectory.mkdirs()
+
+}
+    fun getResizedBitmap(image: Bitmap, maxSize: Int): Bitmap {
+        var width = image.width
+        var height = image.height
+
+        val bitmapRatio = width.toFloat() / height.toFloat()
+        if (bitmapRatio > 1) {
+            width = maxSize
+            height = (width / bitmapRatio).toInt()
+        } else {
+            height = maxSize
+            width = (height * bitmapRatio).toInt()
         }
-
-        try
-        {
-            Log.d("heel",wallpaperDirectory.toString())
-            val f = File(wallpaperDirectory, ((Calendar.getInstance()
-                .getTimeInMillis()).toString() + ".jpg"))
-            f.createNewFile()
-            val fo = FileOutputStream(f)
-            fo.write(bytes.toByteArray())
-            MediaScannerConnection.scanFile(activity!!,
-                arrayOf(f.getPath()),
-                arrayOf("image/jpeg"), null)
-            fo.close()
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath())
-
-            return f.getAbsolutePath()
-        }
-        catch (e1: IOException) {
-            e1.printStackTrace()
-        }
-
-        return ""
+        return Bitmap.createScaledBitmap(image, width, height, true)
     }
 
-    companion object {
-        private val IMAGE_DIRECTORY = "/demonuts"
-    }
+    private fun addCommande(myBitmap: Bitmap) {
 
+        var filestr =ImageToString(myBitmap)
+        val call = RetrofitServiceUpload.endpoint.addCmd(filestr,"C",npha.text.toString(),"12/02/2019")
+        call.enqueue(object : Callback<MyResponse>{
+            override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
+                if (response?.isSuccessful!!) {
+                    toast("l'ordonnance est sauvgardé")
+                } else {
+                    toast("Une erreur s'est produite1")
+                }
+            }
+
+            override fun onFailure(call: Call<MyResponse> ?, t: Throwable?) {
+                toast("Une erreur s'est produite")
+            }
+
+
+        })
+    }
 }
 
 

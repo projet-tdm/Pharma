@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/npha"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
@@ -49,6 +49,11 @@
                 android:text="@string/lan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/commander"/>
+        <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar3" android:visibility="gone"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"
