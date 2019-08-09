@@ -1,4 +1,6 @@
 package com.example.pharma.Entity
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
-
-data class Ville(val nom:String,val tabPharma:MutableList<Pharmacie>):Serializable
+@Entity(tableName = "villes")
+data class Ville(@PrimaryKey val id :Int, val nom:String, val localisation:String):Serializable

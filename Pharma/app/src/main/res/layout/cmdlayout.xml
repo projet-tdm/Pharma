@@ -88,7 +88,7 @@
                 android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintTop_toTopOf="parent" android:textSize="10sp" android:layout_marginBottom="4dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView2" android:background="@drawable/custom_button"
+                app:layout_constraintBottom_toTopOf="@+id/imageView2" android:background="@drawable/toolbar"
                 app:layout_constraintVertical_bias="0.461" android:textColor="@color/colorPrimaryTint"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

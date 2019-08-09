@@ -1,8 +1,10 @@
 package com.example.pharma.Entity
+
 import android.app.Activity
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.pharma.ListAdapter.CustomAdapterPharmacie
+import com.example.pharma.Pharmacies
 import com.example.pharma.Retrofit.RetrofitService
 import com.example.pharma.RoomDataBase.RoomService
 import kotlinx.android.synthetic.main.fragment_pharmacies.*
@@ -14,46 +16,43 @@ import retrofit2.Response
 class MyModel: ViewModel() {
 
 
-     var list:List<Pharmacie>? = null
+    var list:ArrayList<Pharmacie>? = null
 
 
-    fun loadData(act: Activity) {
+    fun loadData(act: Activity,ville:String)
+    {
         act.progressBar.visibility = View.VISIBLE
-        // Get cities from SQLite DB
-        list = RoomService.appDataBase.getPharamcieDao().getPharmacies()
+        list = ArrayList(RoomService.appDataBase.getPharamcieDao().getPharmacies(ville))
 
-        if (list?.size == 0) {
-            // If the list of cities is empty, load from server and save them in SQLite DB
-            getPharmaciesFromRemote(act)
+        if (list?.size == 0)
+        {
+            getPharmaciesFromRemote(act,ville)
 
         }
-        else {
+        else
+        {
             act.progressBar.visibility = View.GONE
             act.listpharmacie.adapter = CustomAdapterPharmacie(act, list!!)
         }
-
-
-
-
     }
 
-    private fun getPharmaciesFromRemote(act:Activity) {
-        val call = RetrofitService.endpoint.getPharmacies()
-        call.enqueue(object : Callback<List<Pharmacie>> {
-            override fun onResponse(call: Call<List<Pharmacie>>?, response: Response<List<Pharmacie>>?) {
+    private fun getPharmaciesFromRemote(act:Activity,ville:String) {
+        val call = RetrofitService.endpoint.getPharmacies(ville)
+        call.enqueue(object : Callback<ArrayList<Pharmacie>> {
+            override fun onResponse(call: Call<ArrayList<Pharmacie>>?, response: Response<ArrayList<Pharmacie>>?) {
                 act.progressBar.visibility = View.GONE
                 if (response?.isSuccessful!!) {
                     list = response?.body()
                    act.progressBar.visibility = View.GONE
-                    act.listpharmacie.adapter = CustomAdapterPharmacie(act, list!!)
-                    // save cities in SQLite DB
+                    act.listpharmacie.adapter =CustomAdapterPharmacie(act,list!!)
+
                     RoomService.appDataBase.getPharamcieDao().addPharmacies(list!!)
                 } else {
                     act.toast("Une erreur s'est produite1")
                 }
             }
 
-            override fun onFailure(call: Call<List<Pharmacie>>?, t: Throwable?) {
+            override fun onFailure(call: Call<ArrayList<Pharmacie>>?, t: Throwable?) {
                act.progressBar.visibility = View.GONE
                 act.toast("Une erreur s'est produite")
             }

@@ -17,26 +17,25 @@ import com.afollestad.materialdialogs.callbacks.onCancel
 import com.example.pharma.Entity.MyResponse
  import com.example.pharma.Retrofit.RetrofitServiceUpload
  import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import org.jetbrains.anko.support.v4.toast
  import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
- import java.io.File
-import java.io.IOException
-import android.graphics.BitmapFactory
-import android.util.Base64
-import okhttp3.ResponseBody
-import java.io.ByteArrayOutputStream
+ import java.io.IOException
+ import android.util.Base64
+import androidx.lifecycle.ViewModelProviders
+import com.example.pharma.Entity.CmdModel
+import com.example.pharma.Entity.MyModel
+import org.joda.time.LocalDateTime
+ import java.io.ByteArrayOutputStream
+
 
 
 class FormulaireCommande : Fragment() {
 
     private val GALLERY = 1
     private val CAMERA = 2
-    private var bitmap = null
+    private var bitmap :Bitmap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,8 +48,11 @@ class FormulaireCommande : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn.setOnClickListener { showPictureDialog() }
+        val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
 
         commander.setOnClickListener{ view ->
+            cmdModel.addCommande(bitmap!!,activity!!)
+
             MaterialDialog(context!!).show {
                 message(R.string.cmd_btn_msg)
                 positiveButton(R.string.ok) {
@@ -71,8 +73,8 @@ class FormulaireCommande : Fragment() {
     }
     private fun showPictureDialog() {
         val pictureDialog = AlertDialog.Builder(activity!!)
-        pictureDialog.setTitle("Select Action")
-        val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
+        pictureDialog.setTitle("Choisir une action")
+        val pictureDialogItems = arrayOf("A partir de Galerie", "Prendre une photo")
         pictureDialog.setItems(pictureDialogItems
         ) {_, which ->
             when (which) {
@@ -109,10 +111,8 @@ class FormulaireCommande : Fragment() {
                 val contentURI = data.data
                 try
                 {
-                    val bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
-                    addCommande(bitmap)
+                    bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
 
-                    Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_LONG).show()
 
                     input.setImageBitmap(bitmap)
 
@@ -129,58 +129,13 @@ class FormulaireCommande : Fragment() {
         }
         else if (requestCode == CAMERA)
         {
-            val thumbnail = data!!.extras!!.get("data") as Bitmap
-            addCommande(thumbnail)
+             bitmap = data!!.extras!!.get("data") as Bitmap
 
-            input.setImageBitmap(thumbnail)
-            Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
-        }
+            input.setImageBitmap(bitmap)
+         }
     }
 
-private fun ImageToString(bitmap:Bitmap):String
-{
-    var str =ByteArrayOutputStream()
-    var bitmapC=getResizedBitmap(bitmap,700)
-    bitmapC.compress(Bitmap.CompressFormat.JPEG,100,str)
-    return Base64.encodeToString(str.toByteArray(),Base64.DEFAULT)
 
-
-}
-    fun getResizedBitmap(image: Bitmap, maxSize: Int): Bitmap {
-        var width = image.width
-        var height = image.height
-
-        val bitmapRatio = width.toFloat() / height.toFloat()
-        if (bitmapRatio > 1) {
-            width = maxSize
-            height = (width / bitmapRatio).toInt()
-        } else {
-            height = maxSize
-            width = (height * bitmapRatio).toInt()
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true)
-    }
-
-    private fun addCommande(myBitmap: Bitmap) {
-
-        var filestr =ImageToString(myBitmap)
-        val call = RetrofitServiceUpload.endpoint.addCmd(filestr,"C",npha.text.toString(),"12/02/2019")
-        call.enqueue(object : Callback<MyResponse>{
-            override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
-                if (response?.isSuccessful!!) {
-                    toast("l'ordonnance est sauvgardé")
-                } else {
-                    toast("Une erreur s'est produite1")
-                }
-            }
-
-            override fun onFailure(call: Call<MyResponse> ?, t: Throwable?) {
-                toast("Une erreur s'est produite")
-            }
-
-
-        })
-    }
 }
 
 
