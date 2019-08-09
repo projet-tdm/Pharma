@@ -6,9 +6,17 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.pharma.Entity.Pharmacie
+import com.example.pharma.Pharmacies
 import com.example.pharma.R
+import java.util.*
 
-class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapter() {
+class CustomAdapterPharmacie(val ctx:Context,val data:ArrayList<Pharmacie>):BaseAdapter() {
+    var arrayList = data
+
+
+    //Store image and arraylist in Temp Array List we Required it later
+    var tempArrayList = ArrayList(arrayList)
+
     override fun getItem(p0: Int)= data.get(p0)
 
     override fun getItemId(p0: Int) = data.get(p0).hashCode().toLong()
@@ -53,5 +61,48 @@ class CustomAdapterPharmacie(val ctx:Context,val data:List<Pharmacie>):BaseAdapt
            return view
        }
        */
+    //Function to set data according to Search Keyword in ListView
+    fun filter(text: String?) {
+
+
+        //Our Search text
+        val text = text!!.toLowerCase(Locale.getDefault())
+
+
+        //Here We Clear Both ArrayList because We update according to Search query.
+
+
+        arrayList.clear()
+
+        if (text.length == 0) {
+
+            /*If Search query is Empty than we add all temp data into our main ArrayList
+
+            We store Value in temp in Starting of Program.
+
+            */
+            arrayList.addAll(tempArrayList)
+
+
+        } else {
+
+
+            for (i in 0..tempArrayList.size - 1) {
+
+                /*
+                If our Search query is not empty than we Check Our search keyword in Temp ArrayList.
+                if our Search Keyword in Temp ArrayList than we add to our Main ArrayList
+                */
+
+                if (tempArrayList.get(i).nom.toLowerCase(Locale.getDefault()).startsWith(text,true)) arrayList.add(tempArrayList.get(i))
+
+            }
+        }
+
+        //This is to notify that data change in Adapter and Reflect the changes.
+        notifyDataSetChanged()
+
+
+    }
     private class ViewHolder(val textView:TextView,val textView2:TextView,val textView3:TextView)
 }

@@ -4,31 +4,30 @@ package com.example.pharma
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
-import android.media.MediaScannerConnection
-import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
-import android.util.Log
+ import android.os.Bundle
+ import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
+  import android.widget.Toast
+ import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
-import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
-import kotlinx.android.synthetic.main.fragment_inscription.*
-import kotlinx.android.synthetic.main.fragment_pharmacies.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
-import java.util.*
+import com.example.pharma.Entity.MyResponse
+ import com.example.pharma.Retrofit.RetrofitServiceUpload
+ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
+import org.jetbrains.anko.support.v4.toast
+ import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+ import java.io.IOException
+ import android.util.Base64
+import androidx.lifecycle.ViewModelProviders
+import com.example.pharma.Entity.CmdModel
+import com.example.pharma.Entity.MyModel
+import org.joda.time.LocalDateTime
+ import java.io.ByteArrayOutputStream
 
 
 
@@ -36,6 +35,7 @@ class FormulaireCommande : Fragment() {
 
     private val GALLERY = 1
     private val CAMERA = 2
+    private var bitmap :Bitmap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,8 +48,11 @@ class FormulaireCommande : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn.setOnClickListener { showPictureDialog() }
+        val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
 
         commander.setOnClickListener{ view ->
+            cmdModel.addCommande(bitmap!!,activity!!)
+
             MaterialDialog(context!!).show {
                 message(R.string.cmd_btn_msg)
                 positiveButton(R.string.ok) {
@@ -70,8 +73,8 @@ class FormulaireCommande : Fragment() {
     }
     private fun showPictureDialog() {
         val pictureDialog = AlertDialog.Builder(activity!!)
-        pictureDialog.setTitle("Select Action")
-        val pictureDialogItems = arrayOf("Select photo from gallery", "Capture photo from camera")
+        pictureDialog.setTitle("Choisir une action")
+        val pictureDialogItems = arrayOf("A partir de Galerie", "Prendre une photo")
         pictureDialog.setItems(pictureDialogItems
         ) {_, which ->
             when (which) {
@@ -94,7 +97,7 @@ class FormulaireCommande : Fragment() {
         startActivityForResult(intent, CAMERA)
     }
 
-    public override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
+     override fun onActivityResult(requestCode:Int, resultCode:Int, data: Intent?) {
 
         super.onActivityResult(requestCode, resultCode, data)
         /* if (resultCode == this.RESULT_CANCELED)
@@ -108,10 +111,12 @@ class FormulaireCommande : Fragment() {
                 val contentURI = data.data
                 try
                 {
-                    val bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
-                    saveImage(bitmap)
-                    Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
+                    bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
+
+
                     input.setImageBitmap(bitmap)
+
+
 
                 }
                 catch (e: IOException) {
@@ -124,52 +129,12 @@ class FormulaireCommande : Fragment() {
         }
         else if (requestCode == CAMERA)
         {
-            val thumbnail = data!!.extras!!.get("data") as Bitmap
-            input.setImageBitmap(thumbnail)
-            saveImage(thumbnail)
-            Toast.makeText(activity!!, "Image Saved!", Toast.LENGTH_SHORT).show()
-        }
+             bitmap = data!!.extras!!.get("data") as Bitmap
+
+            input.setImageBitmap(bitmap)
+         }
     }
 
-    fun saveImage(myBitmap: Bitmap):String {
-        val bytes = ByteArrayOutputStream()
-        myBitmap.compress(Bitmap.CompressFormat.JPEG, 90, bytes)
-        val wallpaperDirectory = File(
-            (Environment.getExternalStorageDirectory()).toString() + IMAGE_DIRECTORY)
-        // have the object build the directory structure, if needed.
-        Log.d("fee",wallpaperDirectory.toString())
-        if (!wallpaperDirectory.exists())
-        {
-
-            wallpaperDirectory.mkdirs()
-        }
-
-        try
-        {
-            Log.d("heel",wallpaperDirectory.toString())
-            val f = File(wallpaperDirectory, ((Calendar.getInstance()
-                .getTimeInMillis()).toString() + ".jpg"))
-            f.createNewFile()
-            val fo = FileOutputStream(f)
-            fo.write(bytes.toByteArray())
-            MediaScannerConnection.scanFile(activity!!,
-                arrayOf(f.getPath()),
-                arrayOf("image/jpeg"), null)
-            fo.close()
-            Log.d("TAG", "File Saved::--->" + f.getAbsolutePath())
-
-            return f.getAbsolutePath()
-        }
-        catch (e1: IOException) {
-            e1.printStackTrace()
-        }
-
-        return ""
-    }
-
-    companion object {
-        private val IMAGE_DIRECTORY = "/demonuts"
-    }
 
 }
 

@@ -16,7 +16,7 @@
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"
                 app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
         <action android:id="@+id/action_identification_to_mapFragment" app:destination="@id/mapFragment"/>
-        <action android:id="@+id/action_identification_to_pharmacies" app:destination="@id/pharmacies"/>
+        <action android:id="@+id/action_identification_to_ville" app:destination="@id/ville"/>
     </fragment>
     <fragment android:id="@+id/inscription" android:name="com.example.pharma.Inscription"
               android:label="fragment_inscription" tools:layout="@layout/fragment_inscription">
@@ -39,6 +39,7 @@
               android:label="fragment_commande" tools:layout="@layout/fragment_commande">
         <action android:id="@+id/action_commandeFragment_to_formulaireCommande"
                 app:destination="@id/formulaireCommande"/>
+        <action android:id="@+id/action_commandeFragment_self" app:destination="@id/commandeFragment"/>
     </fragment>
     <fragment android:id="@+id/detailPharma" android:name="com.example.pharma.DetailPharma"
               android:label="fragment_detail_pharma" tools:layout="@layout/fragment_detail_pharma">
@@ -52,5 +53,9 @@
     <fragment android:id="@+id/formulaireCommande" android:name="com.example.pharma.FormulaireCommande"
               android:label="fragment_formulaire_commande" tools:layout="@layout/fragment_formulaire_commande">
         <action android:id="@+id/action_formulaireCommande_to_commandeFragment" app:destination="@id/commandeFragment"/>
+    </fragment>
+    <fragment android:id="@+id/ville" android:name="com.example.pharma.Ville" android:label="fragment_ville"
+              tools:layout="@layout/fragment_ville">
+        <action android:id="@+id/action_ville_to_pharmacies" app:destination="@id/pharmacies"/>
     </fragment>
 </navigation>
