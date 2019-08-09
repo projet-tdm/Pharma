@@ -35,14 +35,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/renew_passwd_EditText"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/confirm_mdp_input" android:hint="Confirmer mot de passe"
+                style="@style/textInputLayoutStyle">
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    style="@style/editTextStyle" android:id="@+id/confirm_passwd_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
                 style="@style/buttonStyle"
                 android:text="Valider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/change_password_btn"/>
+                android:layout_height="wrap_content" android:id="@+id/renew_passwd_btn"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

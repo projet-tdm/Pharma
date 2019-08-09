@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/phone_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/password_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <TextView
                 android:text="Mot de passe oublié ?"
@@ -55,7 +55,8 @@
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Se connecter"/>
+                android:text="Se connecter" android:background="@drawable/toolbar"
+                />
     </LinearLayout>
     <LinearLayout
             android:orientation="horizontal"

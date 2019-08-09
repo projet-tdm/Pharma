@@ -6,23 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
 import kotlinx.android.synthetic.main.fragment_forgot.*
+import kotlinx.android.synthetic.main.fragment_forgot.phone_EditText
 import kotlinx.android.synthetic.main.fragment_identification.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.random.Random
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class forgot : Fragment() {
 
     override fun onCreateView(
@@ -35,15 +32,37 @@ class forgot : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         renew_password_btn.setOnClickListener{view ->
-            MaterialDialog(context!!).show {
-                message(R.string.signup_btn_msg)
-                positiveButton(R.string.ok) {
-                    view.findNavController().navigate(R.id.action_forgot_to_identification)
+
+            val randomString = (1..8)
+                .map { i -> Random.nextInt(0, 8) }
+                .joinToString("")
+
+            val cnxCall = RetrofitService.usersEndpoint.getUserByTel(phone_EditText.text.toString().toInt())
+            cnxCall.enqueue(object : Callback<List<User>> {
+                override fun onResponse(
+                    call: Call<List<User>>?, response:
+                    Response<List<User>>?
+                ) {
+                    if (response?.isSuccessful!!) {
+                        if(response.body()!!.isNotEmpty()){
+                            val user : User = response.body()!!.first()
+                            val smsManager = SMSManager()
+                            smsManager.sendSmsForgot(randomString,phone_EditText.text.toString().toInt(),view,activity)
+                            val userManager = UserManager()
+                            userManager.alterUser(user.nss,randomString,1,view, activity)
+                            } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
+                        }
+                     else {
+                        //Toast
+                        Toast.makeText(activity, response.body().toString(), Toast.LENGTH_LONG).show()
+                    }
                 }
-                onCancel {
-                    view.findNavController().navigate(R.id.action_forgot_to_identification)
+                override fun onFailure(call: Call<List<User>>?, t: Throwable?) {
+                    //Toast
+                    Toast.makeText(activity, "Echec de la connexion au serveur ! Vérifiez votre connexion internet", Toast.LENGTH_LONG).show()
                 }
-            }
+            })
+
         }
     }
 }

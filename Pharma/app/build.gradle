@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.pharma"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -47,5 +47,6 @@ dependencies {
      annotationProcessor 'com.github.bumptech.glide:compiler:4.3.0'
     implementation 'com.alespero:expandable-cardview:0.6'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
-    implementation fileTree(dir: "libs", include:["*.jar"])
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 }

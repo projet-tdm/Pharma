@@ -26,7 +26,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/first_name_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/last_name_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="phone"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/phone_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/address_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    style="@style/editTextStyle"/>
+                    style="@style/editTextStyle" android:id="@+id/nss_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton
                 style="@style/buttonStyle"

@@ -27,9 +27,12 @@
     <fragment android:id="@+id/forgot" android:name="com.example.pharma.forgot" android:label="fragment_forgot"
               tools:layout="@layout/fragment_forgot">
         <action android:id="@+id/action_forgot_to_identification" app:destination="@id/identification"/>
+        <action android:id="@+id/action_forgot_to_pharmacies" app:destination="@id/pharmacies"/>
     </fragment>
     <fragment android:id="@+id/renew" android:name="com.example.pharma.renew" android:label="fragment_renew"
-              tools:layout="@layout/fragment_renew"/>
+              tools:layout="@layout/fragment_renew">
+        <action android:id="@+id/action_renew_to_pharmacies" app:destination="@id/pharmacies"/>
+    </fragment>
     <fragment android:id="@+id/mapFragment" android:name="com.example.pharma.mapFragment" android:label="fragment_map"
               tools:layout="@layout/fragment_map"/>
     <fragment android:id="@+id/commandeFragment" android:name="com.example.pharma.CommandeFragment"

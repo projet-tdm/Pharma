@@ -1,26 +1,18 @@
 package com.example.pharma
 
-
-import android.Manifest
-import android.app.Activity
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_identification.*
-import org.jetbrains.anko.support.v4.intentFor
-import org.jetbrains.anko.support.v4.startActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-private const val MY_PERMISSIONS_REQUEST_ACCESS_LOCATION = 10
-/**
- * A simple [Fragment] subclass.
- *
- */
 class Identification : Fragment() {
 
     override fun onCreateView(
@@ -40,7 +32,34 @@ class Identification : Fragment() {
             view.findNavController().navigate(R.id.action_identification_to_forgot)
         }
         connexion_btn.setOnClickListener {view ->
-            view.findNavController().navigate(R.id.action_identification_to_pharmacies)
+            val cnxCall = RetrofitService.usersEndpoint.getUserByTel(phone_EditText.text.toString().toInt())
+            cnxCall.enqueue(object : Callback<List<User>> {
+                override fun onResponse(
+                    call: Call<List<User>>?, response:
+                    Response<List<User>>?
+                ) {
+                    if (response?.isSuccessful!!) {
+
+                        if(response.body()!!.isNotEmpty()){
+                            val user : User = response.body()!!.first()
+                            if (user.mdp == password_EditText.text.toString()) {
+                                if (user.new == 1) {
+                                    var bundle = bundleOf("nss" to user.nss)
+                                    view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
+                                } else view.findNavController().navigate(R.id.action_identification_to_pharmacies)
+                            } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
+                        }
+                        else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
+                    } else {
+                        //Toast
+                        Toast.makeText(activity, response.body().toString(),Toast.LENGTH_LONG).show()
+                    }
+                }
+                override fun onFailure(call: Call<List<User>>?, t: Throwable?) {
+                    //Toast
+                    Toast.makeText(activity, "Echec de la connexion au serveur ! Vérifiez votre connexion internet", Toast.LENGTH_LONG).show()
+                }
+            })
         }
     }
 }
