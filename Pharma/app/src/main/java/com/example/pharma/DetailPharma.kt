@@ -64,7 +64,7 @@ class DetailPharma : Fragment() {
             goToFacebook(pharmacie!!.facebook)
         }
         loc.setOnClickListener {
-            goToMap(pharmacie!!.location)
+            //goToMap(pharmacie!!.location)
         }
 
 

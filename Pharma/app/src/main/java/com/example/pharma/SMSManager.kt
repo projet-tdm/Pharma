@@ -1,13 +1,12 @@
 package com.example.pharma
 
-import android.app.Activity
-import android.content.Context
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
+import com.example.pharma.UsersRetrofit.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

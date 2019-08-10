@@ -7,11 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onCancel
+import com.example.pharma.UsersRetrofit.RetrofitService
 import kotlinx.android.synthetic.main.fragment_forgot.*
 import kotlinx.android.synthetic.main.fragment_forgot.phone_EditText
 import kotlinx.android.synthetic.main.fragment_identification.*

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import com.example.pharma.UsersRetrofit.RetrofitService
 import kotlinx.android.synthetic.main.fragment_identification.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,7 +47,7 @@ class Identification : Fragment() {
                                 if (user.new == 1) {
                                     var bundle = bundleOf("nss" to user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
-                                } else view.findNavController().navigate(R.id.action_identification_to_pharmacies)
+                                } else view.findNavController().navigate(R.id.action_identification_to_ville)
                             } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
                         }
                         else phone_input.error = "Identifiant et/ou mot de passe incorrectes"

@@ -2,10 +2,9 @@ package com.example.pharma
 
 import android.view.View
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_identification.*
+import com.example.pharma.UsersRetrofit.RetrofitService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
