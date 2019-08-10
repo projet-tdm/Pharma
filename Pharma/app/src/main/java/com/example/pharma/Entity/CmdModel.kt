@@ -6,8 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.pharma.ListAdapter.CommandeAdapter
  import com.example.pharma.Retrofit.RetrofitService
-import com.example.pharma.Retrofit.RetrofitServiceUpload
- import kotlinx.android.synthetic.main.fragment_commande.*
+import kotlinx.android.synthetic.main.fragment_commande.*
 import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
  import okhttp3.ResponseBody
  import org.jetbrains.anko.toast
@@ -23,15 +22,15 @@ class CmdModel: ViewModel() {
      var list:List<Commande>? = null
 
 
-    fun loadData(act: Activity) {
+    fun loadData(act: Activity,nss:Int) {
         act.progressBar2.visibility = View.VISIBLE
-        getCommandesFromRemote(act)
+        getCommandesFromRemote(act,nss)
 
 
     }
 
-    private fun getCommandesFromRemote(act:Activity) {
-        val call = RetrofitService.endpoint.getCommandes()
+    private fun getCommandesFromRemote(act:Activity,nss:Int) {
+        val call = RetrofitService.endpoint.getCommandes(nss)
         call.enqueue(object : Callback<List<Commande>> {
             override fun onResponse(call: Call<List<Commande>>?, response: Response<List<Commande>>?) {
                 act.progressBar2.visibility = View.GONE
@@ -81,7 +80,7 @@ class CmdModel: ViewModel() {
 
         var filestr =ImageToString(myBitmap)
         val current = LocalDateTime.now()
-        val call = RetrofitServiceUpload.endpoint.addCmd(filestr,"C",act.npha.text.toString(),current.toString())
+        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.npha.text.toString(),current.toString())
         call.enqueue(object : Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
                 if (response?.isSuccessful!!) {

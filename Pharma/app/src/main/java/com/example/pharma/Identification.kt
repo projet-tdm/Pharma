@@ -46,7 +46,13 @@ class Identification : Fragment() {
                                 if (user.new == 1) {
                                     var bundle = bundleOf("nss" to user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
-                                } else view.findNavController().navigate(R.id.action_identification_to_ville)
+                                } else {
+                                    var bundle = Bundle()
+                                    bundle.putInt("nss",user.nss)
+                                    view.findNavController().navigate(R.id.action_identification_to_commandeFragment,bundle)
+
+
+                                }
                             } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
                         }
                         else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
