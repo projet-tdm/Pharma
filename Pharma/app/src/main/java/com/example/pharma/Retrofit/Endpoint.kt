@@ -16,8 +16,8 @@ interface Endpoint {
     fun getPharmacies(@Path("ville") ville_id:String): Call<ArrayList<Pharmacie>>
     @GET("getvilles")
     fun getVilles(): Call<List<Ville>>
-    @GET("getcommandes")
-    fun getCommandes(): Call<List<Commande>>
+    @GET("getcommandes/{nss}")
+    fun getCommandes(@Path("nss") user:Int): Call<List<Commande>>
     @FormUrlEncoded
     @POST("upload1.php")
     fun addCmd(@Field("photo") photo:String, @Field("etat") etat: String, @Field("pharma") pharma:String, @Field("date") date: String): Call<MyResponse>

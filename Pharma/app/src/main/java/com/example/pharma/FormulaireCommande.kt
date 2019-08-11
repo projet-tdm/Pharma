@@ -14,21 +14,10 @@ import android.view.ViewGroup
  import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
-import com.example.pharma.Entity.MyResponse
- import com.example.pharma.Retrofit.RetrofitServiceUpload
- import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
-import org.jetbrains.anko.support.v4.toast
- import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
- import java.io.IOException
- import android.util.Base64
+import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
+import java.io.IOException
 import androidx.lifecycle.ViewModelProviders
 import com.example.pharma.Entity.CmdModel
-import com.example.pharma.Entity.MyModel
-import org.joda.time.LocalDateTime
- import java.io.ByteArrayOutputStream
-
 
 
 class FormulaireCommande : Fragment() {

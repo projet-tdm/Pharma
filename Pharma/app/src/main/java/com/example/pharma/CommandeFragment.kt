@@ -30,10 +30,11 @@ class CommandeFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val nss = arguments!!.getInt("nss")
 
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
 
-             cmdModel.loadData(activity!!)
+             cmdModel.loadData(activity!!,nss)
 
              //listcmd.adapter = CommandeAdapter(activity!!,cmdModel.list!!)
 

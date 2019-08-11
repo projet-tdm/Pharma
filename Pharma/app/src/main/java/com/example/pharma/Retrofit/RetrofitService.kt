@@ -10,4 +10,8 @@ object RetrofitService {
         Retrofit.Builder().baseUrl(baseUrl1). addConverterFactory(GsonConverterFactory.create()). build().create(
             Endpoint::class.java)
     }
+    val endpointUpload : Endpoint by lazy {
+        Retrofit.Builder().baseUrl(baseUrl). addConverterFactory(GsonConverterFactory.create()). build().create(
+            Endpoint::class.java)
+    }
 }
