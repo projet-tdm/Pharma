@@ -21,7 +21,8 @@ interface Endpoint {
     @FormUrlEncoded
     @POST("upload1.php")
     fun addCmd(@Field("photo") photo:String, @Field("etat") etat: String, @Field("pharma") pharma:String, @Field("date") date: String): Call<MyResponse>
-
     @PUT("annuler/{id}")
     fun annulerCmd(@Path("id") id:Int):Call<ResponseBody>
+    @GET("getpharmaciesGarde/")
+    fun getPharmaciesGarde(): Call<List<Pharmacie>>
 }
