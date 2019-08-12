@@ -1,5 +1,6 @@
 package com.example.pharma
 
+import android.content.Context
 import android.os.Bundle
 import android.os.Parcel
 import android.os.Parcelable
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.SearchView
+import androidx.core.content.edit
 import kotlinx.android.synthetic.main.fragment_pharmacies.*
 
 import androidx.lifecycle.ViewModelProviders
@@ -36,15 +38,36 @@ class Pharmacies() : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val amount = arguments!!.getString("ville")
+        val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
 
+        val ville = pref.getString("ville", "alger")
         val pharmaModel = ViewModelProviders.of(activity!!).get(MyModel::class.java)
         val searchView = find(R.id.searchView) as SearchView
+        val con = pref.getBoolean("connected", false)
+        if(con==false)
+        {
+            button6.visibility=View.GONE
+        }
+        else
+        {
+            button6.visibility=View.VISIBLE
+            button6.setOnClickListener {
+                val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
 
+                pref.edit {
+                    putBoolean("connected"
+                        ,false)
+
+
+                }
+
+                view?.findNavController()?.navigate(R.id.action_pharmacies_to_identification)
+            }
+        }
         // If the list of cities is null, load the list from DB
        /* if (pharmaModel.list==null)
         {*/
-            pharmaModel.loadData(activity!!,amount)
+            pharmaModel.loadData(activity!!,ville)
 
        /* }
         else

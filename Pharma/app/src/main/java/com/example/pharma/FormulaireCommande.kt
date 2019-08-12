@@ -2,6 +2,7 @@ package com.example.pharma
 
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
  import android.os.Bundle
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import java.io.IOException
 import androidx.lifecycle.ViewModelProviders
 import com.example.pharma.Entity.CmdModel
+import org.jetbrains.anko.support.v4.toast
 
 
 class FormulaireCommande : Fragment() {
@@ -25,6 +27,7 @@ class FormulaireCommande : Fragment() {
     private val GALLERY = 1
     private val CAMERA = 2
     private var bitmap :Bitmap? = null
+    var name:String?=null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,9 +41,10 @@ class FormulaireCommande : Fragment() {
         super.onActivityCreated(savedInstanceState)
         btn.setOnClickListener { showPictureDialog() }
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
-
+        val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+        val nss = pref.getInt("nss", 0)
         commander.setOnClickListener{ view ->
-            cmdModel.addCommande(bitmap!!,activity!!)
+            cmdModel.addCommande(bitmap!!,activity!!,nss,name!!)
 
             MaterialDialog(context!!).show {
                 message(R.string.cmd_btn_msg)
@@ -102,7 +106,8 @@ class FormulaireCommande : Fragment() {
                 {
                     bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver, contentURI)
 
-
+                    name=contentURI.path.substringAfterLast("/")
+                    toast("file "+name)
                     input.setImageBitmap(bitmap)
 
 
@@ -119,7 +124,9 @@ class FormulaireCommande : Fragment() {
         else if (requestCode == CAMERA)
         {
              bitmap = data!!.extras!!.get("data") as Bitmap
-
+            val uri=data.data
+            name=uri.path.substringAfterLast("/")
+            toast("file "+name)
             input.setImageBitmap(bitmap)
          }
     }

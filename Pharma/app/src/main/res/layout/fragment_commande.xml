@@ -11,7 +11,7 @@
     <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorLightGrey"
+            android:background="@color/colorPrimaryTint"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbar2" android:visibility="visible" app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:textColor="@color/titre" android:textSize="30sp" android:layout_marginStart="16dp"/>
+            android:textColor="@color/titre" android:textSize="24sp" android:layout_marginStart="16dp"/>
 
     <TextView android:id="@+id/trait_e"
               android:fontFamily="@font/gothamrounded_lightitalic"
@@ -73,15 +73,17 @@
               android:layout_marginStart="52dp"
               app:layout_constraintTop_toBottomOf="@+id/chip3"/>
     <Button
-            android:layout_width="51dp"
-            android:layout_height="43dp"
+            android:layout_width="41dp"
+            android:layout_height="34dp"
             android:id="@+id/add"
             android:background="@drawable/ic_add_shopping_cart_black_24dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="@color/titre" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/textView"
-            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.825"
-            android:layout_marginTop="8dp"/>
+            android:backgroundTint="@color/titre"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/chip4"
+            android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="@+id/en_cours"
+            app:layout_constraintHorizontal_bias="0.74" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2"/>
     <View
             android:id="@+id/divider"
             android:layout_width="0dp"
@@ -119,5 +121,13 @@
             app:layout_constraintStart_toStartOf="@+id/listcmd" app:layout_constraintEnd_toEndOf="@+id/listcmd"
             android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:visibility="gone"/>
+    <Button
+            android:layout_width="49dp"
+            android:layout_height="44dp"
+            android:id="@+id/button5" app:layout_constraintStart_toEndOf="@+id/textView"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="@+id/toolbar2"
+            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.939"
+            app:layout_constraintTop_toTopOf="@+id/toolbar2" app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+            android:background="@drawable/exit" app:layout_constraintVertical_bias="0.533"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

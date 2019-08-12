@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/graph"
-            app:startDestination="@id/identification">
+            app:startDestination="@id/accueil">
 
     <fragment android:id="@+id/identification" android:name="com.example.pharma.Identification"
               android:label="fragment_identification" tools:layout="@layout/fragment_identification">
@@ -40,6 +40,8 @@
         <action android:id="@+id/action_commandeFragment_to_formulaireCommande"
                 app:destination="@id/formulaireCommande"/>
         <action android:id="@+id/action_commandeFragment_self" app:destination="@id/commandeFragment"/>
+        <action android:id="@+id/action_commandeFragment_to_identification" app:destination="@id/identification"
+                app:popUpToInclusive="false" app:popUpTo="@+id/accueil"/>
     </fragment>
     <fragment android:id="@+id/detailPharma" android:name="com.example.pharma.DetailPharma"
               android:label="fragment_detail_pharma" tools:layout="@layout/fragment_detail_pharma">
@@ -49,6 +51,8 @@
     <fragment android:id="@+id/pharmacies" android:name="com.example.pharma.Pharmacies"
               android:label="fragment_pharmacies" tools:layout="@layout/fragment_pharmacies">
         <action android:id="@+id/action_pharmacies_to_detailPharma" app:destination="@id/detailPharma"/>
+        <action android:id="@+id/action_pharmacies_to_identification" app:destination="@id/identification"
+                app:popUpTo="@+id/accueil" app:popUpToInclusive="false"/>
     </fragment>
     <fragment android:id="@+id/formulaireCommande" android:name="com.example.pharma.FormulaireCommande"
               android:label="fragment_formulaire_commande" tools:layout="@layout/fragment_formulaire_commande">
@@ -57,5 +61,13 @@
     <fragment android:id="@+id/ville" android:name="com.example.pharma.Ville" android:label="fragment_ville"
               tools:layout="@layout/fragment_ville">
         <action android:id="@+id/action_ville_to_pharmacies" app:destination="@id/pharmacies"/>
+    </fragment>
+    <fragment android:id="@+id/accueil" android:name="com.example.pharma.Accueil" android:label="fragment_accueil"
+              tools:layout="@layout/fragment_accueil">
+        <action android:id="@+id/action_accueil_to_identification" app:destination="@id/identification"/>
+        <action android:id="@+id/action_accueil_to_commandeFragment" app:destination="@id/commandeFragment"/>
+        <action android:id="@+id/action_accueil_to_mapFragment" app:destination="@id/mapFragment"/>
+        <action android:id="@+id/action_accueil_to_ville" app:destination="@id/ville"
+                app:popEnterAnim="@anim/decelerate_cubic"/>
     </fragment>
 </navigation>

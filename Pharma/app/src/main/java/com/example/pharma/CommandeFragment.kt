@@ -1,13 +1,17 @@
 package com.example.pharma
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.callbacks.onCancel
 import com.example.pharma.Entity.CmdModel
 import com.example.pharma.Entity.Commande
 import com.example.pharma.Entity.MyModel
@@ -30,7 +34,8 @@ class CommandeFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val nss = arguments!!.getInt("nss")
+        val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+        val nss = pref.getInt("nss", 0)
 
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
 
@@ -43,6 +48,18 @@ class CommandeFragment : Fragment() {
 
         add.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_commandeFragment_to_formulaireCommande)
+        }
+        button5.setOnClickListener {
+             val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+
+            pref.edit {
+                putBoolean("connected"
+                    ,false)
+
+
+            }
+
+            view?.findNavController()?.navigate(R.id.action_commandeFragment_to_identification)
         }
 
     }

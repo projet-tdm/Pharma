@@ -1,5 +1,6 @@
 package com.example.pharma
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,12 +25,38 @@ class MainActivity : AppCompatActivity() {
 
         //Setting the navigation controller to Bottom Nav
         bottomNav.setupWithNavController(navController)
-
+        val pref = this.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+        val con = pref.getBoolean("connected", false)
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.identification-> hideBottomNav()
                 R.id.inscription-> hideBottomNav()
                 R.id.forgot-> hideBottomNav()
+                R.id.forgot-> hideBottomNav()
+                R.id.accueil-> hideBottomNav()
+                R.id.pharmacies-> {        val con = pref.getBoolean("connected", false)
+                                            showBottomNav()
+                                            if (con==false)  bottomNav.menu.getItem(2).setVisible(false)
+
+
+                }
+                R.id.mapFragment-> {
+                                            val con = pref.getBoolean("connected", false)
+                                            showBottomNav()
+                                            if (con==false)  bottomNav.menu.getItem(2).setVisible(false)
+
+                }
+                R.id.ville-> {
+                                            val con = pref.getBoolean("connected", false)
+                                            showBottomNav()
+                                            if (con==false) bottomNav.menu.getItem(2).setVisible(false)
+
+                }
+                R.id.detailPharma-> {        val con = pref.getBoolean("connected", false)
+                                                showBottomNav()
+                                                if (con==false) bottomNav.menu.getItem(2).setVisible(false)
+
+                }
                 else->showBottomNav()
 
             }
@@ -40,29 +67,7 @@ class MainActivity : AppCompatActivity() {
     private fun showBottomNav() {
 
         bottomNav.visibility = View.VISIBLE
-        /*bottomNav.setOnNavigationItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.map-> {
-                    // Permission has already been granted
-                    startActivity(intentFor<MapsActivity>())
-                     startActivity<MapsActivity>(
-                         "job" to 1,
-                         "lat" to 35.680,
-                         "long" to -0.639
-                 )
-                }
-                R.id.pharmacies-> {
-                     val fragment = Pharmacies()
-
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.fragment, fragment)
-                    transaction.commit()
-
-                }
-
-            }
-            return@setOnNavigationItemSelectedListener true
-        }*/
+        bottomNav.menu.getItem(2).setVisible(true)
 
 
 

@@ -54,9 +54,7 @@ class DetailPharma : Fragment() {
         textView15.text="Jeudi                     "+str1?.get(4)+" - "+strs2?.get(4)
         textView16.text="Vendredi               "+ str1?.get(5)+" - "+strs2?.get(5)
         textView17.text="Samedi                 "+ str1?.get(6)+" - "+strs2?.get(6)
-        button.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_detailPharma_to_pharmacies)
-        }
+
         phone.setOnClickListener {
             makeCall(pharmacie!!.tel)
         }
@@ -64,7 +62,10 @@ class DetailPharma : Fragment() {
             goToFacebook(pharmacie!!.facebook)
         }
         loc.setOnClickListener {
-            //goToMap(pharmacie!!.location)
+            goToMap(pharmacie!!.lat,pharmacie!!.lng)
+        }
+        bac.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_detailPharma_to_pharmacies)
         }
 
 
@@ -82,9 +83,11 @@ class DetailPharma : Fragment() {
             startActivity(intent)
         }
     }
-    private fun goToMap (id:String )
+    private fun goToMap (lat:Double,lng:Double)
     {
-        val gmmIntentUri = Uri.parse(id)
+
+        val pharma="Pharmacie"
+        val gmmIntentUri = Uri.parse("geo:0,0?q=$lat,$lng($pharma)")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)

@@ -20,7 +20,7 @@ interface Endpoint {
     fun getCommandes(@Path("nss") user:Int): Call<List<Commande>>
     @FormUrlEncoded
     @POST("upload1.php")
-    fun addCmd(@Field("photo") photo:String, @Field("etat") etat: String, @Field("pharma") pharma:String, @Field("date") date: String): Call<MyResponse>
+    fun addCmd(@Field("photo") photo:String, @Field("etat") etat: String, @Field("pharma") pharma:String, @Field("date") date: String,@Field("user") user: Int,@Field("name") name:String): Call<MyResponse>
     @PUT("annuler/{id}")
     fun annulerCmd(@Path("id") id:Int):Call<ResponseBody>
     @GET("getpharmaciesGarde/")

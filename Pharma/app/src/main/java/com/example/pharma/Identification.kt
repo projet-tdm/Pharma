@@ -1,11 +1,13 @@
 package com.example.pharma
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.example.pharma.UsersRetrofit.RetrofitService
@@ -48,9 +50,16 @@ class Identification : Fragment() {
                                     var bundle = bundleOf("nss" to user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
                                 } else {
-                                    var bundle = Bundle()
-                                    bundle.putInt("nss",user.nss)
-                                    view.findNavController().navigate(R.id.action_identification_to_commandeFragment,bundle)
+                                     val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+
+                                    pref.edit {
+                                        putBoolean("connected"
+                                            ,true)
+
+                                        putInt("nss"
+                                            ,user.nss)
+                                    }
+                                     view.findNavController().navigate(R.id.action_identification_to_commandeFragment)
 
 
                                 }

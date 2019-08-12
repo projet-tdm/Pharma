@@ -15,6 +15,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
+import android.R.attr.bitmap
+
+
 
 class CmdModel: ViewModel() {
 
@@ -76,11 +79,12 @@ class CmdModel: ViewModel() {
         return Bitmap.createScaledBitmap(image, width, height, true)
     }
 
-     fun addCommande(myBitmap: Bitmap,act: Activity) {
+     fun addCommande(myBitmap: Bitmap,act: Activity,nss:Int,name:String) {
+
 
         var filestr =ImageToString(myBitmap)
         val current = LocalDateTime.now()
-        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.npha.text.toString(),current.toString())
+        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.npha.text.toString(),current.toString(),nss,name)
         call.enqueue(object : Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
                 if (response?.isSuccessful!!) {
