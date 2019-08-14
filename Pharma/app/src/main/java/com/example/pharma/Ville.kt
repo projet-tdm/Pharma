@@ -1,6 +1,7 @@
 package com.example.pharma
 
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.SearchView
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.pharma.Entity.MyModel
@@ -34,15 +36,21 @@ class Ville : Fragment() {
 
         // If the list of cities is null, load the list from DB
 
-            villeModel.loadData(activity!!)
+        villeModel.loadData(activity!!)
 
 
 
         button3.setOnClickListener {
-            var bundle = Bundle()
-            bundle.putString("ville",android_material_design_spinner.text.toString())
-            view?.findNavController()?.navigate(R.id.action_ville_to_pharmacies,bundle)
+            val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
 
+            pref.edit {
+                putString(
+                    "ville"
+                    , android_material_design_spinner.text.toString()
+                )
+                view?.findNavController()?.navigate(R.id.action_ville_to_pharmacies)
+
+            }
         }
     }
 

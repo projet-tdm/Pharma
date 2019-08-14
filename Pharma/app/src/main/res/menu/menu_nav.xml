@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+            android:id="@+id/accueil"
+            android:title="@string/ACCUEIL"
+            android:icon="@drawable/ic_home_black_24dp"
+    />
+    <item
             android:id="@+id/ville"
             android:title="@string/pharma"
             android:icon="@drawable/ic_local_pharmacy_black_24dp"
