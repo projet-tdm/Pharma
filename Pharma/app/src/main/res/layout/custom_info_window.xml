@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:background="@drawable/info_layout" android:paddingTop="15dp" android:paddingLeft="15dp"
+              android:paddingRight="15dp" android:paddingBottom="15dp">
+
+    <ImageView
+            android:id="@+id/badge"
+            android:contentDescription="Bof"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true" app:srcCompat="@drawable/pharma_icon"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="#ff000000"
+                android:textSize="14sp"
+                android:textStyle="bold" android:text="Bouziane"/>
+
+        <TextView
+                android:id="@+id/snippet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:textColor="#ff7f7f7f"
+                android:textSize="14sp" android:text="Oran \n0792781245" android:lineSpacingExtra="2dp"/>
+    </LinearLayout>
+</LinearLayout>

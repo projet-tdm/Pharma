@@ -26,5 +26,5 @@ interface Endpoint {
     @PUT("annuler/{id}")
     fun annulerCmd(@Path("id") id:Int):Call<ResponseBody>
     @GET("getpharmaciesGarde/")
-    fun getPharmaciesGarde(): Call<List<Pharmacie>>
+    fun getPharmaciesGarde(): Call<ArrayList<Pharmacie>>
 }
