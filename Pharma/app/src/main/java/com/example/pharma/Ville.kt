@@ -18,6 +18,7 @@ import com.example.pharma.ListAdapter.CustomAdapterPharmacie
 import kotlinx.android.synthetic.main.fragment_pharmacies.*
 import kotlinx.android.synthetic.main.fragment_ville.*
 import org.jetbrains.anko.support.v4.find
+import org.jetbrains.anko.support.v4.toast
 
 
 class Ville : Fragment() {
@@ -38,7 +39,8 @@ class Ville : Fragment() {
 
         villeModel.loadData(activity!!)
 
-
+        android_material_design_spinner.setDialogTitle("Trouver votre ville")
+        android_material_design_spinner.setDismissText("Quitter")
 
         button3.setOnClickListener {
             val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
@@ -46,12 +48,13 @@ class Ville : Fragment() {
             pref.edit {
                 putString(
                     "ville"
-                    , android_material_design_spinner.text.toString()
+                    , android_material_design_spinner.selectedItem.toString()
                 )
-                view?.findNavController()?.navigate(R.id.action_ville_to_pharmacies)
+                 view?.findNavController()?.navigate(R.id.action_ville_to_pharmacies)
 
             }
         }
+
     }
 
 }

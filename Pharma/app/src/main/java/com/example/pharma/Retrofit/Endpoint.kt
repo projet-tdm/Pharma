@@ -16,6 +16,8 @@ interface Endpoint {
     fun getPharmacies(@Path("ville") ville_id:String): Call<ArrayList<Pharmacie>>
     @GET("getvilles")
     fun getVilles(): Call<List<Ville>>
+    @GET("getPharma")
+    fun getPharma(): Call<List<Pharmacie>>
     @GET("getcommandes/{nss}")
     fun getCommandes(@Path("nss") user:Int): Call<List<Commande>>
     @FormUrlEncoded

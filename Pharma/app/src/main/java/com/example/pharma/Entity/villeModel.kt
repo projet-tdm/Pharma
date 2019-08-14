@@ -30,9 +30,9 @@ class villeModel : ViewModel() {
             convertToString(listville)
             val arrayAdapter = ArrayAdapter<String>(
                 act,
-                R.layout.support_simple_spinner_dropdown_item, list
+                R.layout.support_simple_spinner_dropdown_item, list!!
             )
-            act.android_material_design_spinner.setAdapter<ArrayAdapter<String>>(arrayAdapter)
+            act.android_material_design_spinner.adapter=arrayAdapter
         }
     }
 
@@ -47,7 +47,7 @@ class villeModel : ViewModel() {
                         act,
                         R.layout.support_simple_spinner_dropdown_item, list!!
                     )
-                    act.android_material_design_spinner.setAdapter<ArrayAdapter<String>>(arrayAdapter)
+                    act.android_material_design_spinner.adapter=arrayAdapter
 
                     RoomService.appDataBase.getVilleDao().addVilles(response.body()!!)
                 } else {

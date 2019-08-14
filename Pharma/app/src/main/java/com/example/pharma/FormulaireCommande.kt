@@ -19,6 +19,8 @@ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import java.io.IOException
 import androidx.lifecycle.ViewModelProviders
 import com.example.pharma.Entity.CmdModel
+import com.example.pharma.Entity.MyModel
+ import kotlinx.android.synthetic.main.fragment_ville.*
 import org.jetbrains.anko.support.v4.toast
 
 
@@ -40,6 +42,14 @@ class FormulaireCommande : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn.setOnClickListener { showPictureDialog() }
+        val model = ViewModelProviders.of(activity!!).get(MyModel::class.java)
+
+        // If the list of cities is null, load the list from DB
+
+        model.loadDataall(activity!!)
+
+        android_material_design_spinner1.setDialogTitle("Trouver une pharmacie")
+        android_material_design_spinner1.setDismissText("Quitter")
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
         val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
         val nss = pref.getInt("nss", 0)

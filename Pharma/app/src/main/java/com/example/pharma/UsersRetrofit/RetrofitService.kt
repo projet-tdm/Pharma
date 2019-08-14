@@ -9,7 +9,7 @@ object RetrofitService {
             addConverterFactory(GsonConverterFactory.create()).build().create(Endpoint::class.java)
     }
     val usersEndpoint : UsersEndpoint by lazy {
-        Retrofit.Builder().baseUrl("http://192.168.1.6:8082").
+        Retrofit.Builder().baseUrl("http://192.168.1.7:8082").
             addConverterFactory(GsonConverterFactory.create()).
             build().create(UsersEndpoint::class.java)
     }

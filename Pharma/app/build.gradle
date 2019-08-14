@@ -63,4 +63,5 @@ dependencies {
     implementation 'com.weiwangcn.betterspinner:library-material:1.1.0'
     implementation 'joda-time:joda-time:2.10.2'
     implementation 'com.github.debop:koda-time:2.0.0'
+    implementation 'com.github.DonMat:searchablespinner:v1.0.1'
 }

@@ -21,17 +21,13 @@
                 android:layout_height="41sp" android:id="@+id/cmd"
                 android:textSize="24sp" android:textColor="@color/titre"
                 android:fontFamily="@font/gothamrounded_medium"/>
-        <com.google.android.material.textfield.TextInputLayout
+        <pl.utkala.searchablespinner.SearchableSpinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/pharmacie"
-                style="@style/textInputLayoutStyle"
-                android:hint="Pharmacie">
-            <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    style="@style/editTextStyle" android:id="@+id/npha"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content"
+                android:id="@+id/android_material_design_spinner1"
+
+                app:closeText="Quitter"
+                app:dialogTitle="Trouver une Pharmacie"/>
 
         <ImageButton
                 android:src="@android:drawable/ic_menu_upload"

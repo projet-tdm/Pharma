@@ -84,7 +84,7 @@ class CmdModel: ViewModel() {
 
         var filestr =ImageToString(myBitmap)
         val current = LocalDateTime.now()
-        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.npha.text.toString(),current.toString(),nss,name)
+        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.android_material_design_spinner1.selectedItem.toString(),current.toString(),nss,name)
         call.enqueue(object : Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
                 if (response?.isSuccessful!!) {
