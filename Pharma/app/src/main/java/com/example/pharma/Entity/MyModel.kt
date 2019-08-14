@@ -17,6 +17,7 @@ class MyModel: ViewModel() {
 
 
     var list:ArrayList<Pharmacie>? = null
+    var listGarde:ArrayList<Pharmacie>? = null
 
 
     fun loadData(act: Activity,ville:String)
@@ -35,6 +36,7 @@ class MyModel: ViewModel() {
             act.listpharmacie.adapter = CustomAdapterPharmacie(act, list!!)
         }
     }
+
 
     private fun getPharmaciesFromRemote(act:Activity,ville:String) {
         val call = RetrofitService.endpoint.getPharmacies(ville)

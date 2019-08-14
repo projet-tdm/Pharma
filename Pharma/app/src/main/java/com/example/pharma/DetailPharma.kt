@@ -14,7 +14,11 @@ import kotlinx.android.synthetic.main.fragment_detail_pharma.*
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.pharma.Entity.MyModel
+import com.example.pharma.Entity.Pharmacie
+import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import kotlinx.android.synthetic.main.horairelayout.*
+import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,9 +41,10 @@ class DetailPharma : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val vm= ViewModelProviders.of(activity!!).get(MyModel::class.java)
-
+        var pharmacie :Pharmacie? = null
         val amount = arguments!!.getInt("id")
-        val pharmacie = vm.list?.get(amount)
+        if (arguments!!.getInt("map")==1) pharmacie = vm.listGarde?.get(amount)
+        else pharmacie = vm.list?.get(amount)
         textView22.text=pharmacie?.adresse
         textView21.text=pharmacie?.nom
         textView4.text=pharmacie?.cassConv

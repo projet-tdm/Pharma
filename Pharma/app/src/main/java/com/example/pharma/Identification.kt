@@ -51,8 +51,6 @@ class Identification : Fragment() {
                                     var bundle = Bundle()
                                     bundle.putInt("nss",user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_commandeFragment,bundle)
-
-
                                 }
                             } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
                         }

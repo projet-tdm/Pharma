@@ -4,16 +4,24 @@ package com.example.pharma
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
 import com.example.pharma.Entity.Pharmacie
@@ -26,74 +34,44 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.custom_info_window.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlinx.android.synthetic.main.fragment_info.*
+import com.example.pharma.Entity.MyModel
+import org.jetbrains.anko.support.v4.act
+import org.jetbrains.anko.toast
 
+class mapFragment : Fragment(),OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-
-class mapFragment : Fragment(),OnMapReadyCallback {
-
+    val rayon = 20000
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
-/*override fun onPause() {
-        super.onPause()
-        map.onPause()
+    private var collection : HashMap<Marker,Int> = HashMap()
+
+    override fun onInfoWindowClick(marker : Marker) {
+        var bundle = Bundle()
+        bundle.putInt("id",collection.get(marker)!!)
+        bundle.putInt("map",1)
+        this.findNavController().navigate(R.id.action_mapFragment_to_detailPharma,bundle)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        map.onDestroy()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        map.onStop()
-    }
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        map.onSaveInstanceState(outState)
-    }
-
-    override fun onLowMemory() {
-        super.onLowMemory()
-        map.onLowMemory()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        map.onStart()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        map.onCreate(savedInstanceState)
-    }
-    override fun onResume() {
-        super.onResume()
-        map.onResume()
-    }*/
     fun  degreesToRadians(degrees:Double):Double{
     return degrees * Math.PI / 180
-}
+    }
 
 
     fun distanceBetweenEarthCoordinates(lat1:Double, lon1:Double, lat2:Double, lon2:Double):Double {
         val earthRadiusKm = 6371
         var dLat = degreesToRadians(lat2 - lat1)
         var dLon = degreesToRadians(lon2 - lon1)
-
         var lat11 = degreesToRadians(lat1)
         var lat22 = degreesToRadians(lat2)
-
         var a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat11) * Math.cos(
                 lat22
@@ -101,54 +79,76 @@ class mapFragment : Fragment(),OnMapReadyCallback {
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
         return earthRadiusKm * c *1000
     }
+    internal inner class CustomInfoWindowAdapter : GoogleMap.InfoWindowAdapter {
+        private val window: View = layoutInflater.inflate(R.layout.custom_info_window, null)
 
+        override fun getInfoWindow(marker: Marker): View? {
+            render(marker, window)
+            return window
+        }
+
+        override fun getInfoContents(marker: Marker): View? {
+            render(marker, window)
+            return window
+        }
+
+        private fun render(marker: Marker, view: View) {
+            view.findViewById<ImageView>(R.id.badge).setImageResource(R.drawable.pharma_icon)
+            view.findViewById<TextView>(R.id.title).text = marker.title
+            view.findViewById<TextView>(R.id.snippet).text = marker.snippet
+        }
+    }
     override fun onMapReady(googleMap: GoogleMap) {
-        val rayon = 20000
         mMap = googleMap
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity as Context)
+        mMap.setInfoWindowAdapter(CustomInfoWindowAdapter())
+        mMap.setOnInfoWindowClickListener(this@mapFragment)
         mMap.isMyLocationEnabled = true
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(activity as Context)
+
+        val vm= ViewModelProviders.of(activity!!).get(MyModel::class.java)
+
         if (ActivityCompat.checkSelfPermission(context as Context,
                     Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                 fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                     if (location != null) {
                         val currentLatLng = LatLng(location.latitude, location.longitude)
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15f))
+                        var pos : LatLng
+                        var snippet : String
+                        var marker: Marker
+                        var ph : Pharmacie
                         val call = RetrofitService.endpoint.getPharmaciesGarde()
-                        call.enqueue(object : Callback<List<Pharmacie>> {
-                            override fun onResponse(
-                                call: Call<List<Pharmacie>>?, response:
-                                Response<List<Pharmacie>>?
-                            ) {
+                        call.enqueue(object : Callback<ArrayList<Pharmacie>> {
+                            override fun onResponse(call: Call<ArrayList<Pharmacie>>?, response: Response<ArrayList<Pharmacie>>?) {
                                 if (response?.isSuccessful!!) {
-                                    var pos : LatLng
-                                    for (ph in response.body()!!){
+                                    vm.listGarde = response.body()
+                                    for (i in 0..vm.listGarde!!.size-1){
+                                        ph = vm.listGarde!!.get(i)
                                         if (distanceBetweenEarthCoordinates(location.latitude,location.longitude,ph.lat,ph.lng)<rayon){
                                             pos = LatLng(ph.lat,ph.lng)
-                                            mMap.addMarker(
+                                            snippet = ph.adresse + "\n" + ph.tel
+                                            marker = mMap.addMarker(
                                                 MarkerOptions()
                                                     .position(pos)
                                                     .title(ph.nom)
-                                                    .snippet(ph.adresse)
+                                                    .snippet(snippet)
                                                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.arrow))
                                             )
+                                            collection.put(marker,i)
                                         }
                                     }
                                 } else {
-                                    Toast.makeText(activity, response.body().toString(), Toast.LENGTH_LONG).show()
+                                    act.toast("Une erreur s'est produite")
                                 }
-
                             }
-                            override fun onFailure(call: Call<List<Pharmacie>>?, t: Throwable?) {
-                                Toast.makeText(
-                                    activity,
-                                    "Echec de la connexion au serveur ! Vérifiez votre connexion internet",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                            override fun onFailure(call: Call<ArrayList<Pharmacie>>?, t: Throwable?) {
+                                act.toast("Une erreur s'est produite")
                             }
                         })
                     }
                 }
-            }
+        }
     }
 
     override fun onCreateView(
@@ -157,7 +157,6 @@ class mapFragment : Fragment(),OnMapReadyCallback {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_map, container, false)
-
         return v
     }
 
