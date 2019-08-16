@@ -17,19 +17,19 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
             style="@style/verticalLayoutStyle">
         <TextView
-                android:text="Changer de mot de passe"
+                android:text="@string/renew_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/forgot_title_textView"
                 style="@style/fragmentTitleStyle"/>
         <TextView
-                android:text="@string/forgot_msg"
+                android:text="@string/renew_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/change_msg"
-                style="@style/messageStyle"/>
+                style="@style/messageStyle" android:singleLine="false"/>
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/renew_mdp_input" android:hint="Nouveau mot de passe"
+                android:id="@+id/renew_mdp_input" android:hint="@string/renew_passwd"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/confirm_mdp_input" android:hint="Confirmer mot de passe"
+                android:id="@+id/confirm_mdp_input" android:hint="@string/renew_passwd_confirm"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -51,7 +51,7 @@
 
         <com.google.android.material.button.MaterialButton
                 style="@style/buttonStyle"
-                android:text="Valider"
+                android:text="@string/renew_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/renew_passwd_btn"/>
     </LinearLayout>

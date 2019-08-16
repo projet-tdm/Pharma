@@ -1,11 +1,39 @@
 <resources>
     <string name="app_name">Pharma</string>
+    <string name="forgot_title">Mot de passe oublié</string>
+    <string name="forgot_phone">Numéro de téléphone</string>
+    <string name="forgot_btn">Rennouvler</string>
+
+    <string name="renew_title">Changer de mot de passe</string>
+    <string name="renew_passwd">Nouveau mot de passe</string>
+    <string name="renew_passwd_confirm">Confirmer le mot de passe</string>
+    <string name="renew_btn">Valider</string>
+
+    <string name="id_title">S\'identifier</string>
+    <string name="id_phone">Numéro de téléphone</string>
+    <string name="id_passwd">Mot de passe</string>
+    <string name="id_forgot_link">Mot de passe oublié?</string>
+    <string name="id_btn">Se connecter</string>
+    <string name="id_account_msg">Vous n\'avez pas de compte? </string>
+    <string name="id_account_link">\ S\'enregistrer </string>
+
+    <string name="account_title">\ S\'enregistrer </string>
+    <string name="account_name">Nom </string>
+    <string name="account_last_name">Prénom </string>
+    <string name="account_phone">Numéro de téléphone </string>
+    <string name="account_address">Adresse postale </string>
+    <string name="account_nss">Numéro de sécurité sociale </string>
+    <string name="account_btn">Inscription </string>
+    <string name="account_id_msg">Vous avez déja un compte?  </string>
+    <string name="account_id_link">\ S\'identifier </string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="forgot_msg">Nous avons besoin juste de votre numéro de téléphone pour vous communiquer un nouveau mot
         de passe.
     </string>
+    <string name="renew_msg">Changez votre mot de passe pour pouvoir accéder a votre compte</string>
     <string name="signup_btn_msg">Nous venons tout juste de vous envoyer votre mot de passe par SMS.</string>
     <string name="cmd_btn_msg">Votre commande est lancer avec succès.</string>
     <string name="connexion">Connectez pour lancer des commandes</string>
