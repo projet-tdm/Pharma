@@ -13,7 +13,7 @@
             app:layout_constraintStart_toStartOf="parent" android:id="@+id/linv2"
             style="@style/verticalLayoutStyle" app:layout_constraintBottom_toTopOf="@+id/linh2">
         <TextView
-                android:text="S'enregistrer"
+                android:text="@string/account_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/signup_textView"
@@ -21,7 +21,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/first_name_input" android:hint="Nom"
+                android:id="@+id/first_name_input" android:hint="@string/account_name"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/last_name_input" android:hint="Prénom"
+                android:id="@+id/last_name_input" android:hint="@string/account_last_name"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phone_input2" android:hint="Numéro de téléphone"
+                android:id="@+id/phone_input2" android:hint="@string/account_phone"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/address_input" android:hint="Adresse postale"
+                android:id="@+id/address_input" android:hint="@string/account_address"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -62,7 +62,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/ssn_input" android:hint="Numéro de sécurité sociale"
+                android:id="@+id/ssn_input" android:hint="@string/account_nss"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.button.MaterialButton
                 style="@style/buttonStyle"
-                android:text="Inscription"
+                android:text="@string/account_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/signup_btn"/>
 
@@ -87,11 +87,11 @@
             app:layout_constraintEnd_toEndOf="parent" android:id="@+id/linh2"
             style="@style/horizontalLayoutStyle">
         <TextView
-                android:text="Vous avez déja un compte? "
+                android:text="@string/account_id_msg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/have_account_textView"/>
         <TextView
-                android:text="S'identifier."
+                android:text="@string/account_id_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/signin_textView"
                 style="@style/fragmentBottomLinkStyle"/>

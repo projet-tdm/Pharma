@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             style="@style/verticalLayoutStyle">
         <TextView
-                android:text="Mot de passe oublié"
+                android:text="@string/forgot_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/forgot_title_textView"
@@ -27,7 +27,7 @@
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/phone_input3" android:hint="Numéro de téléphone"
+                android:id="@+id/phone_input3" android:hint="@string/forgot_phone"
                 style="@style/textInputLayoutStyle">
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -38,7 +38,7 @@
 
         <com.google.android.material.button.MaterialButton
                 style="@style/buttonStyle"
-                android:text="Rennouvler"
+                android:text="@string/forgot_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/renew_password_btn"/>
     </LinearLayout>
