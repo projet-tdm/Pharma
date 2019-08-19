@@ -1,5 +1,4 @@
 package com.example.pharma.Utils;
-
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,7 +12,7 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
- import android.text.Html;
+import android.text.Html;
 import androidx.core.app.NotificationCompat;
 import com.example.pharma.MainActivity;
 import com.example.pharma.R;
@@ -28,9 +27,7 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Abhi on 13 Nov 2017 013.
- */
+
 
 public class NotificationUtils {
     private static final int NOTIFICATION_ID = 200;
@@ -45,8 +42,7 @@ public class NotificationUtils {
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
         //Populate activity map
-        activityMap.put("MainActivity", MainActivity.class);
-        activityMap.put("SecondActivity", SecondActivity.class);
+         activityMap.put("SecondActivity", SecondActivity.class);
     }
 
     /**

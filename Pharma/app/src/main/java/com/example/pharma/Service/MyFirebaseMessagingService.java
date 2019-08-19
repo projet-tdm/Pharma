@@ -1,10 +1,14 @@
 package com.example.pharma.Service;
 
+
 import android.content.Intent;
+
 import android.util.Log;
-
-
-import com.example.pharma.MainActivity;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.media.app.NotificationCompat;
+import com.example.pharma.CommandeFragment;
+import com.example.pharma.R;
+import com.example.pharma.SecondActivity;
 import com.example.pharma.Utils.NotificationUtils;
 import com.example.pharma.VO.NotificationVO;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -24,8 +28,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+  super.onMessageReceived(remoteMessage);
 
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
+       Log.d(TAG, "From: " + remoteMessage.getFrom());
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
@@ -47,7 +52,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationVO.setTitle(title);
         notificationVO.setMessage(message);
 
-        Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent resultIntent = new Intent(getApplicationContext(), SecondActivity.class);
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.displayNotification(notificationVO, resultIntent);
         notificationUtils.playNotificationSound();
@@ -66,7 +71,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationVO.setAction(action);
         notificationVO.setActionDestination(actionDestination);
 
-        Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent resultIntent = new Intent(getApplicationContext(), CommandeFragment.class);
 
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.displayNotification(notificationVO, resultIntent);
