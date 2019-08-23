@@ -2,8 +2,12 @@ package com.example.pharma.Service;
 
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import android.widget.Toast;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -33,7 +37,15 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
     }
 
 
-    private void sendRegistrationToServer(String token) {
-        // TODO: Implement this method to send token to your app server.
+    private void sendRegistrationToServer(String token)
+    {
+        SharedPreferences pref = getSharedPreferences("fileName",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("device", token);
+        editor.commit();
+
+        Log.d( "CHECK",pref.getString("device", "alger"));
+
+
     }
 }

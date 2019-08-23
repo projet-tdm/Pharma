@@ -26,7 +26,6 @@ class NotificationModel: ViewModel() {
             override fun onResponse(call: Call<List<Notification>>?, response: Response<List<Notification>>?) {
                   if (response?.isSuccessful!!) {
                     list = response?.body()
-
                 } else {
                     act.toast("Une erreur s'est produite1")
                 }

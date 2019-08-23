@@ -1,9 +1,12 @@
 package com.example.pharma.Service;
 
 
+import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.media.app.NotificationCompat;
 import com.example.pharma.CommandeFragment;
@@ -28,19 +31,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-  super.onMessageReceived(remoteMessage);
+        super.onMessageReceived(remoteMessage);
 
        Log.d(TAG, "From: " + remoteMessage.getFrom());
 
         // Check if message contains a data payload.
-        if (remoteMessage.getData().size() > 0) {
+     /*   if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             Map<String, String> data = remoteMessage.getData();
             handleData(data);
 
-        } else if (remoteMessage.getNotification() != null) {
+        } else*/ if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            handleNotification(remoteMessage.getNotification());
+            SharedPreferences pref = getSharedPreferences("fileName", Context.MODE_PRIVATE);
+
+           if(pref.getBoolean("connected", false))
+            {handleNotification(remoteMessage.getNotification());}
         }// Check if message contains a notification payload.
 
     }

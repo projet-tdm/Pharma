@@ -14,18 +14,18 @@
     <string name="id_passwd">Mot de passe</string>
     <string name="id_forgot_link">Mot de passe oublié?</string>
     <string name="id_btn">Se connecter</string>
-    <string name="id_account_msg">Vous n\'avez pas de compte? </string>
-    <string name="id_account_link">\ S\'enregistrer </string>
+    <string name="id_account_msg">Vous n\'avez pas de compte?</string>
+    <string name="id_account_link">\ S\'enregistrer</string>
 
-    <string name="account_title">\ S\'enregistrer </string>
-    <string name="account_name">Nom </string>
-    <string name="account_last_name">Prénom </string>
-    <string name="account_phone">Numéro de téléphone </string>
-    <string name="account_address">Adresse postale </string>
-    <string name="account_nss">Numéro de sécurité sociale </string>
-    <string name="account_btn">Inscription </string>
-    <string name="account_id_msg">Vous avez déja un compte?  </string>
-    <string name="account_id_link">\ S\'identifier </string>
+    <string name="account_title">\ S\'enregistrer</string>
+    <string name="account_name">Nom</string>
+    <string name="account_last_name">Prénom</string>
+    <string name="account_phone">Numéro de téléphone</string>
+    <string name="account_address">Adresse postale</string>
+    <string name="account_nss">Numéro de sécurité sociale</string>
+    <string name="account_btn">Inscription</string>
+    <string name="account_id_msg">Vous avez déja un compte?</string>
+    <string name="account_id_link">\ S\'identifier</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -54,4 +54,5 @@
     <string name="hr">Horaire</string>
     <string name="comm">Commander</string>
     <string name="lan">Lancer la commande</string>
+    <string name="notif">Mes notifications</string>
 </resources>

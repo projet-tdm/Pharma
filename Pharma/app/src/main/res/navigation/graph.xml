@@ -44,6 +44,7 @@
         <action android:id="@+id/action_commandeFragment_self" app:destination="@id/commandeFragment"/>
         <action android:id="@+id/action_commandeFragment_to_identification" app:destination="@id/identification"
                 app:popUpToInclusive="false" app:popUpTo="@+id/accueil"/>
+        <action android:id="@+id/action_commandeFragment_to_notifications" app:destination="@id/notifications"/>
     </fragment>
     <fragment android:id="@+id/detailPharma" android:name="com.example.pharma.DetailPharma"
               android:label="fragment_detail_pharma" tools:layout="@layout/fragment_detail_pharma">
@@ -72,4 +73,6 @@
         <action android:id="@+id/action_accueil_to_ville" app:destination="@id/ville"
                 app:popEnterAnim="@anim/decelerate_cubic"/>
     </fragment>
+    <fragment android:id="@+id/notifications" android:name="com.example.pharma.Notifications"
+              android:label="fragment_notifications" tools:layout="@layout/fragment_notifications"/>
 </navigation>

@@ -49,21 +49,7 @@ class CommandeFragment : Fragment() {
         }
         val button = view?.findViewById<Button>(R.id.notif)
         button?.setOnClickListener {
-            val popupMenu: PopupMenu = PopupMenu(activity!!,notif)
-            popupMenu.menuInflater.inflate(R.menu.popup_menu,popupMenu.menu)
-            for (item in notifModel.list!!)
-            {
-                popupMenu.getMenu().add("La commande "+item.commande.toString()+"est traité date : "+item.date)
-
-            }
-
-            /*popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-                when(item.itemId) {
-
-                 }
-                true
-            })*/
-            popupMenu.show()
+            view?.findNavController()?.navigate(R.id.action_commandeFragment_to_notifications)
         }
     }
 
