@@ -10,14 +10,20 @@ import android.widget.Toast
 import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
+import com.example.pharma.Entity.Device
+import com.example.pharma.Entity.Pharmacie
+import com.example.pharma.ListAdapter.CustomAdapterPharmacie
+import com.example.pharma.RoomDataBase.RoomService
 import com.example.pharma.UsersRetrofit.RetrofitService
 import kotlinx.android.synthetic.main.fragment_identification.*
+import kotlinx.android.synthetic.main.fragment_pharmacies.*
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class Identification : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -56,6 +62,27 @@ class Identification : Fragment() {
                                         putInt("nss"
                                             ,user.nss)
                                     }
+
+
+                                    val device=pref.getString("device","vide")
+                                    val call = com.example.pharma.UsersRetrofit.RetrofitService.usersEndpoint.addDevice(Device(id=device,user = user.nss))
+                                    call.enqueue(object : Callback<String> {
+                                        override fun onResponse(call: Call<String>?, response: Response<String>?) {
+                                            if (response?.isSuccessful!!) {
+
+
+                                            } else {
+                                                toast("Une erreur s'est produite1")
+                                            }
+                                        }
+
+                                        override fun onFailure(call: Call<String>?, t: Throwable?) {
+
+                                            toast("Une erreur s'est produite")
+                                        }
+
+
+                                    })
                                      view.findNavController().navigate(R.id.action_identification_to_commandeFragment)
                                 }
                             } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
@@ -70,6 +97,7 @@ class Identification : Fragment() {
                     Toast.makeText(activity, "Echec de la connexion au serveur ! Vérifiez votre connexion internet", Toast.LENGTH_LONG).show()
                 }
             })
+
         }
     }
 }

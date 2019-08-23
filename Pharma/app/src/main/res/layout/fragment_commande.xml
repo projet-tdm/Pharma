@@ -10,7 +10,7 @@
                                                    android:id="@+id/frameLayout3">
     <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="46dp"
             android:background="@color/colorPrimaryTint"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:textColor="@color/titre" android:textSize="24sp" android:layout_marginStart="16dp"/>
+            android:textColor="@color/titre" android:textSize="18sp" android:layout_marginStart="8dp"/>
 
     <TextView android:id="@+id/trait_e"
               android:fontFamily="@font/gothamrounded_lightitalic"
@@ -46,9 +46,8 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="@string/T"
-              android:layout_marginEnd="88dp"
-              app:layout_constraintEnd_toEndOf="parent"
-              app:layout_constraintTop_toBottomOf="@+id/chip4"/>
+              app:layout_constraintTop_toBottomOf="@+id/chip4" android:layout_marginEnd="56dp"
+              app:layout_constraintEnd_toStartOf="@+id/textView23"/>
 
     <TextView android:id="@+id/en_cours"
               android:fontFamily="@font/gothamrounded_lightitalic"
@@ -60,7 +59,7 @@
               app:layout_constraintStart_toEndOf="@+id/annul_e"
               android:layout_marginStart="8dp"
               app:layout_constraintTop_toBottomOf="@+id/chip" android:layout_marginEnd="8dp"
-              app:layout_constraintEnd_toStartOf="@+id/trait_e"/>
+              app:layout_constraintEnd_toStartOf="@+id/trait_e" app:layout_constraintHorizontal_bias="0.48"/>
 
     <TextView android:id="@+id/annul_e"
               android:fontFamily="@font/gothamrounded_lightitalic"
@@ -70,49 +69,48 @@
               android:layout_height="wrap_content"
               android:text="@string/A"
               app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="52dp"
+              android:layout_marginStart="28dp"
               app:layout_constraintTop_toBottomOf="@+id/chip3"/>
     <Button
-            android:layout_width="41dp"
-            android:layout_height="34dp"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
             android:id="@+id/add"
             android:background="@drawable/ic_add_shopping_cart_black_24dp"
             android:backgroundTint="@color/titre"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/chip4"
-            android:layout_marginStart="8dp" app:layout_constraintBottom_toBottomOf="@+id/en_cours"
-            app:layout_constraintHorizontal_bias="0.74" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/toolbar2" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/notif" app:layout_constraintStart_toEndOf="@+id/textView"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.835"/>
     <View
             android:id="@+id/divider"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/grey"
+            android:background="@color/colorPrimaryTint"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="90dp" app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:layout_marginTop="40dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="90dp" app:layout_constraintHorizontal_bias="0.0"/>
+            android:layout_marginEnd="60dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="44dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="60dp" app:layout_constraintHorizontal_bias="1.0"/>
     <com.google.android.material.chip.Chip
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:id="@+id/chip" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintEnd_toStartOf="@+id/chip4"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toEndOf="@+id/chip3"
-            android:layout_marginStart="8dp" app:chipBackgroundColor="@color/cours"/>
+            android:layout_marginEnd="16dp" app:layout_constraintStart_toEndOf="@+id/chip3"
+            android:layout_marginStart="16dp" app:chipBackgroundColor="@color/cours"
+    />
     <com.google.android.material.chip.Chip
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:id="@+id/chip3" android:layout_marginTop="20dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="60dp" app:chipBackgroundColor="@color/annul"/>
+            android:layout_marginStart="36dp" app:chipBackgroundColor="@color/annul"/>
     <com.google.android.material.chip.Chip
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:id="@+id/chip4"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="84dp" app:chipBackgroundColor="@color/traite"
-            android:layout_marginTop="12dp" app:layout_constraintTop_toBottomOf="@+id/toolbar2"/>
+            app:chipBackgroundColor="@color/traite"
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@+id/chip5" android:layout_marginEnd="56dp"/>
     <ProgressBar
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
@@ -122,12 +120,35 @@
             android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:visibility="gone"/>
     <Button
-            android:layout_width="49dp"
-            android:layout_height="44dp"
-            android:id="@+id/button5" app:layout_constraintStart_toEndOf="@+id/textView"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="@+id/toolbar2"
-            android:layout_marginEnd="8dp" app:layout_constraintHorizontal_bias="0.939"
+            android:layout_width="37dp"
+            android:layout_height="32dp"
+            android:id="@+id/button5"
             app:layout_constraintTop_toTopOf="@+id/toolbar2" app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
-            android:background="@drawable/exit" app:layout_constraintVertical_bias="0.533"/>
+            android:background="@drawable/exit"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar2" android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.285"/>
+    <Button
+            android:layout_width="40dp"
+            android:layout_height="28dp"
+            android:id="@+id/notif" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/button5"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_notifications_black_24dp"
+    />
+    <com.google.android.material.chip.Chip
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:id="@+id/chip5" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:chipBackgroundColor="@color/colorAccent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"/>
+    <TextView
+            android:text="Payée"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView23" android:textSize="@dimen/sizecmd"
+            android:textColor="@color/lignecmd" android:fontFamily="@font/gothamrounded_light"
+            app:layout_constraintTop_toBottomOf="@+id/chip5"
+            android:layout_marginEnd="36dp" app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

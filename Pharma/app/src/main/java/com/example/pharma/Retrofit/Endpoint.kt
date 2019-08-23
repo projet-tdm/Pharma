@@ -1,9 +1,6 @@
 package com.example.pharma.Retrofit
 
-import com.example.pharma.Entity.Commande
-import com.example.pharma.Entity.Pharmacie
-import com.example.pharma.Entity.MyResponse
-import com.example.pharma.Entity.Ville
+import com.example.pharma.Entity.*
 import okhttp3.ResponseBody
 
 import retrofit2.Call
@@ -27,4 +24,6 @@ interface Endpoint {
     fun annulerCmd(@Path("id") id:Int):Call<ResponseBody>
     @GET("getpharmaciesGarde/")
     fun getPharmaciesGarde(): Call<ArrayList<Pharmacie>>
+    @GET("getNotifications/{user}")
+    fun getNotif(@Path("user") user:Int): Call<List<Notification>>
 }

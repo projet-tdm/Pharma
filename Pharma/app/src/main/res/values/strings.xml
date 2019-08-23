@@ -54,4 +54,5 @@
     <string name="hr">Horaire</string>
     <string name="comm">Commander</string>
     <string name="lan">Lancer la commande</string>
+    <string name="notif">Mes notifications</string>
 </resources>
