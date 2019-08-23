@@ -42,7 +42,6 @@ class Identification : Fragment() {
                     Response<List<User>>?
                 ) {
                     if (response?.isSuccessful!!) {
-
                         if(response.body()!!.isNotEmpty()){
                             val user : User = response.body()!!.first()
                             if (user.mdp == password_EditText.text.toString()) {
@@ -51,17 +50,13 @@ class Identification : Fragment() {
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
                                 } else {
                                      val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
-
                                     pref.edit {
                                         putBoolean("connected"
                                             ,true)
-
                                         putInt("nss"
                                             ,user.nss)
                                     }
                                      view.findNavController().navigate(R.id.action_identification_to_commandeFragment)
-
-
                                 }
                             } else phone_input.error = "Identifiant et/ou mot de passe incorrectes"
                         }

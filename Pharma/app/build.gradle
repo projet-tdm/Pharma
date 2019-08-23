@@ -64,4 +64,9 @@ dependencies {
     implementation 'joda-time:joda-time:2.10.2'
     implementation 'com.github.debop:koda-time:2.0.0'
     implementation 'com.github.DonMat:searchablespinner:v1.0.1'
+    implementation 'com.braintreepayments.api:drop-in:3.7.1'
+    //implementation 'com.android.volley:volley:1.1.1'
+    implementation 'dev.dworks.libs:volleyplus:+'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
 }

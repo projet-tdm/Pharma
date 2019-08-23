@@ -72,4 +72,6 @@
         <action android:id="@+id/action_accueil_to_ville" app:destination="@id/ville"
                 app:popEnterAnim="@anim/decelerate_cubic"/>
     </fragment>
+    <fragment android:id="@+id/paymentFragment" android:name="com.example.pharma.PaymentFragment"
+              android:label="fragment_payment" tools:layout="@layout/fragment_payment"/>
 </navigation>
