@@ -22,6 +22,8 @@ interface Endpoint {
     fun addCmd(@Field("photo") photo:String, @Field("etat") etat: String, @Field("pharma") pharma:String, @Field("date") date: String,@Field("user") user: Int,@Field("name") name:String): Call<MyResponse>
     @PUT("annuler/{id}")
     fun annulerCmd(@Path("id") id:Int):Call<ResponseBody>
+    @PUT("payer/{id}")
+    fun payerCmd(@Path("id") id:Int):Call<ResponseBody>
     @GET("getpharmaciesGarde/")
     fun getPharmaciesGarde(): Call<ArrayList<Pharmacie>>
     @GET("getNotifications/{user}")

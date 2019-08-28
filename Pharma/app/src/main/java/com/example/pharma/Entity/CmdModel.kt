@@ -16,19 +16,24 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import android.R.attr.bitmap
-
+import android.content.Context
+import android.widget.TextView
+import android.widget.Toast
+import com.example.pharma.CommandeFragment
+import com.example.pharma.R
+import com.google.android.material.chip.Chip
 
 
 class CmdModel: ViewModel() {
 
 
-     var list:List<Commande>? = null
+    var list:List<Commande>? = null
+    var frag:CommandeFragment? = null
 
 
     fun loadData(act: Activity,nss:Int) {
         act.progressBar2.visibility = View.VISIBLE
         getCommandesFromRemote(act,nss)
-
 
     }
 
@@ -40,7 +45,7 @@ class CmdModel: ViewModel() {
                 if (response?.isSuccessful!!) {
                     list = response?.body()
                     act.progressBar2.visibility = View.GONE
-                    act.listcmd.adapter = CommandeAdapter(act, list!!)
+                    act.listcmd.adapter = CommandeAdapter(act, list!!,frag!!)
                   } else {
                     act.toast("Une erreur s'est produite1")
                 }
@@ -117,6 +122,30 @@ class CmdModel: ViewModel() {
             }
 
 
+        })
+    }
+    fun payer(act: Context,id:Int,curentCmd:Commande,view:View)
+    {
+        val call = RetrofitService.endpoint.payerCmd(id)
+        call.enqueue(object : Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody> ?, response: Response<ResponseBody> ?) {
+                if (response?.isSuccessful!!) {
+                    var curent = view?.findViewById(R.id.mnt) as TextView
+                    curent.visibility = View.GONE
+                    curent = view?.findViewById(R.id.payer) as TextView
+                    curent.visibility = View.GONE
+                    curent = view?.findViewById(R.id.chip2) as Chip
+                    curent.setChipBackgroundColorResource(R.color.colorAccent)
+                    Toast.makeText(act, "Transaction Successful", Toast.LENGTH_LONG).show()
+                    curentCmd?.etat = "P"
+                } else {
+                    act.toast("Une erreur s'est produite1")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody> ?, t: Throwable?) {
+                act.toast("Une erreur s'est produite")
+            }
         })
     }
 
