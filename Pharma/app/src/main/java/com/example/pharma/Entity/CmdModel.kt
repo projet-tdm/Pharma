@@ -132,6 +132,8 @@ class CmdModel: ViewModel() {
                 if (response?.isSuccessful!!) {
                     var curent = view?.findViewById(R.id.mnt) as TextView
                     curent.visibility = View.GONE
+                    curent = view?.findViewById(R.id.curr) as TextView
+                    curent.visibility = View.GONE
                     curent = view?.findViewById(R.id.payer) as TextView
                     curent.visibility = View.GONE
                     curent = view?.findViewById(R.id.chip2) as Chip

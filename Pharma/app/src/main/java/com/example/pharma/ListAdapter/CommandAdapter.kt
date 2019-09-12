@@ -49,10 +49,12 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>,frag:CommandeFragm
         var anul=view.findViewById(com.example.pharma.R.id.button2) as Button
         var payer=view.findViewById(com.example.pharma.R.id.payer) as Button
         var mnt=view.findViewById(com.example.pharma.R.id.mnt) as TextView
+        var curr=view.findViewById(com.example.pharma.R.id.curr) as TextView
 
         anul.visibility=View.GONE
         payer.visibility=View.GONE
         mnt.visibility=View.GONE
+        curr.visibility=View.GONE
         holder.textView.setText("Commande "+data.get(i).numero.toString())
         /* holder.imageView.setImageResource(data.get(i).image)*/
         when (data.get(i).etat) {
@@ -63,7 +65,8 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>,frag:CommandeFragm
                    payer.visibility=View.VISIBLE
                   //LE MONTANT
                    mnt.visibility=View.VISIBLE
-                    mnt.text = "33"
+                   curr.visibility=View.VISIBLE
+                    mnt.text = "1500"
                   payer.setOnClickListener {
                       commandFragment.amount = mnt.text.toString()
                       commandFragment.doTransaction(data.get(i),view)

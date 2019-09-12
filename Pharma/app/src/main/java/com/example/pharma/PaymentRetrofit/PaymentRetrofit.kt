@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object PaymentRetrofit {
     val paymentendpoint : PaymentEndpoint by lazy {
-        Retrofit.Builder().baseUrl("http://192.168.2.35:5000").
+        Retrofit.Builder().baseUrl(" http://2b199a03.ngrok.io").
             addConverterFactory(GsonConverterFactory.create()).build().create(PaymentEndpoint::class.java)
     }
 }

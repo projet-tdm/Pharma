@@ -22,6 +22,7 @@ import org.jetbrains.anko.toast
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.security.MessageDigest
 
 class Identification : Fragment() {
     override fun onCreateView(
@@ -50,7 +51,7 @@ class Identification : Fragment() {
                     if (response?.isSuccessful!!) {
                         if(response.body()!!.isNotEmpty()){
                             val user : User = response.body()!!.first()
-                            if (user.mdp == password_EditText.text.toString()) {
+                            if (user.mdp == password_EditText.text.toString().toMD5()) {
                                 if (user.new == 1) {
                                     var bundle = bundleOf("nss" to user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
@@ -99,5 +100,14 @@ class Identification : Fragment() {
             })
 
         }
+    }
+    fun String.toMD5(): String {
+        // toByteArray: default is Charsets.UTF_8 - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.text/to-byte-array.html
+        val bytes = MessageDigest.getInstance("MD5").digest(this.toByteArray())
+        return bytes.toHex()
+    }
+
+    fun ByteArray.toHex(): String {
+        return joinToString("") { "%02x".format(it) }
     }
 }
