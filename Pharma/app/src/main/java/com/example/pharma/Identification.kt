@@ -51,7 +51,7 @@ class Identification : Fragment() {
                     if (response?.isSuccessful!!) {
                         if(response.body()!!.isNotEmpty()){
                             val user : User = response.body()!!.first()
-                            if (user.mdp == password_EditText.text.toString()) {
+                            if (user.mdp == password_EditText.text.toString().toMD5()) {
                                 if (user.new == 1) {
                                     var bundle = bundleOf("nss" to user.nss)
                                     view.findNavController().navigate(R.id.action_identification_to_renew, bundle)
