@@ -11,11 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onCancel
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.request.StringRequest
@@ -23,10 +21,7 @@ import com.android.volley.toolbox.Volley
 import com.braintreepayments.api.dropin.DropInActivity
 import com.braintreepayments.api.dropin.DropInRequest
 import com.braintreepayments.api.dropin.DropInResult
-import com.example.pharma.Entity.CmdModel
-import com.example.pharma.Entity.Commande
-import com.example.pharma.Entity.Notification
-import com.example.pharma.Entity.NotificationModel
+import com.example.pharma.Entity.*
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.TextHttpResponseHandler
 import cz.msebera.android.httpclient.Header
@@ -45,8 +40,8 @@ class detailNotif : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
-        val  API_GET_TOKEN = "http://ca64c3ab.ngrok.io/client_token"
-        val  API_CHECKOUT = "http://ca64c3ab.ngrok.io/checkout"
+        val  API_GET_TOKEN = paymentURL +"/client_token"
+        val  API_CHECKOUT = paymentURL+"/checkout"
         val REQUEST_CODE:Int = 7777
 
     }

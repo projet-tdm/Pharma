@@ -1,4 +1,4 @@
-package com.example.pharma.VO;
+package com.example.pharma.Notification.VO;
 
 public class NotificationVO {
     private String title;

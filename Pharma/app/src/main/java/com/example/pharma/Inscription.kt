@@ -7,8 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.example.pharma.Entity.User
+import com.example.pharma.Entity.UserManager
 import kotlinx.android.synthetic.main.fragment_inscription.*
-import java.security.MessageDigest
 import kotlin.random.Random
 
 class Inscription : Fragment() {

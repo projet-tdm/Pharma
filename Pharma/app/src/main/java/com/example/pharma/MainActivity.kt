@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.identification-> hideBottomNav()
                 R.id.inscription-> hideBottomNav()
                 R.id.forgot-> hideBottomNav()
-                R.id.forgot-> hideBottomNav()
+                R.id.renew-> hideBottomNav()
                 R.id.accueil-> hideBottomNav()
                 R.id.pharmacies-> {        val con = pref.getBoolean("connected", false)
                                             showBottomNav()

@@ -6,14 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
-import kotlinx.android.synthetic.main.fragment_identification.*
+import com.example.pharma.Entity.UserManager
 import kotlinx.android.synthetic.main.fragment_renew.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class renew : Fragment() {

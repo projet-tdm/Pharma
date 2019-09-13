@@ -8,14 +8,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
- import android.os.Bundle
- import android.provider.MediaStore
-import android.util.Log
+import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-  import android.widget.Toast
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
@@ -26,7 +25,7 @@ import java.io.IOException
 import androidx.lifecycle.ViewModelProviders
 import com.example.pharma.Entity.CmdModel
 import com.example.pharma.Entity.MyModel
- import kotlinx.android.synthetic.main.fragment_ville.*
+
 import org.jetbrains.anko.support.v4.toast
 
 
