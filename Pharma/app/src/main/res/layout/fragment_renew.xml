@@ -49,7 +49,7 @@
                     style="@style/editTextStyle" android:id="@+id/confirm_passwd_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
                 style="@style/buttonStyle"
                 android:text="@string/renew_btn"
                 android:layout_width="match_parent"

@@ -23,7 +23,7 @@ class UserManager {
             ) {
                 if (response?.isSuccessful!!) {
                     Toast.makeText(activity, response.body().toString(), Toast.LENGTH_LONG).show()
-                    view.findNavController().navigate(R.id.commandeFragment)
+                    view.findNavController().navigate(R.id.identification)
                 }
                 else {
                     //Toast

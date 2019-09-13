@@ -12,6 +12,7 @@ import retrofit2.http.Path
 interface UsersEndpoint {
     @POST("addUser/")
     fun addUser(@Body user: User): Call<String>
+
     @POST("addDevice/")
     fun addDevice(@Body device: Device): Call<String>
 

@@ -14,6 +14,7 @@
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/linh1"
             app:layout_constraintStart_toStartOf="parent" android:id="@+id/linv1"
             style="@style/verticalLayoutStyle" android:layout_height="0dp">
+
         <TextView
                 android:text="@string/id_title"
                 android:layout_width="wrap_content"
@@ -50,12 +51,11 @@
                 android:gravity="end" android:textSize="12sp" android:fontFamily="@font/gothamrounded_book"
                 android:id="@+id/forgot_textView"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
                 android:id="@+id/connexion_btn"
-                style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/toolbar"
+                style="@style/buttonStyle"
                 android:text="@string/id_btn"/>
     </LinearLayout>
     <LinearLayout

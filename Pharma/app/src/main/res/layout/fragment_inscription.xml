@@ -70,7 +70,7 @@
                     android:inputType="number"
                     style="@style/editTextStyle" android:id="@+id/nss_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.button.MaterialButton
+        <Button
                 style="@style/buttonStyle"
                 android:text="@string/account_btn"
                 android:layout_width="match_parent"
