@@ -1,4 +1,4 @@
-package com.example.pharma.UsersRetrofit
+package com.example.pharma.Retrofits.UsersRetrofit
 
 import retrofit2.Call
 import retrofit2.http.GET

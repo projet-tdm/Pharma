@@ -1,4 +1,4 @@
-package com.example.pharma.Utils;
+package com.example.pharma.Notification.Utils;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,11 +14,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.Html;
 import androidx.core.app.NotificationCompat;
-import com.example.pharma.CommandeFragment;
 import com.example.pharma.MainActivity;
 import com.example.pharma.R;
-import com.example.pharma.SecondActivity;
-import com.example.pharma.VO.NotificationVO;
+import com.example.pharma.Notification.VO.NotificationVO;
 
 
 import java.io.IOException;
@@ -43,7 +41,7 @@ public class NotificationUtils {
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
         //Populate activity map
-         activityMap.put("SecondActivity", MainActivity.class);
+         activityMap.put("MainActivity", MainActivity.class);
     }
 
     /**

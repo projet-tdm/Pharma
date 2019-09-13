@@ -1,4 +1,4 @@
-package com.example.pharma.PaymentRetrofit
+package com.example.pharma.Retrofits.PaymentRetrofit
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

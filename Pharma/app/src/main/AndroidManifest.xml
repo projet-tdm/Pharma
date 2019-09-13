@@ -27,20 +27,18 @@
             android:theme="@style/AppTheme.Launcher"
             tools:ignore="GoogleAppIndexingWarning">
         <service
-                android:name=".Service.MyFirebaseInstanceIdService"
+                android:name=".Notification.Service.MyFirebaseInstanceIdService"
                 android:enabled="true"
                 android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".Service.MyFirebaseMessagingService">
+        <service android:name=".Notification.Service.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <activity android:name=".SecondActivity">
-        </activity>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
@@ -48,7 +46,8 @@
 
         <activity
                 android:name=".MainActivity"
-                android:screenOrientation="portrait">
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

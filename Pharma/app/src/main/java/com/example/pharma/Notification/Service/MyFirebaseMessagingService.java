@@ -1,4 +1,4 @@
-package com.example.pharma.Service;
+package com.example.pharma.Notification.Service;
 
 
 import android.content.Context;
@@ -6,19 +6,11 @@ import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.Toast;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.media.app.NotificationCompat;
-import com.example.pharma.CommandeFragment;
 import com.example.pharma.MainActivity;
-import com.example.pharma.R;
-import com.example.pharma.SecondActivity;
-import com.example.pharma.Utils.NotificationUtils;
-import com.example.pharma.VO.NotificationVO;
+import com.example.pharma.Notification.Utils.NotificationUtils;
+import com.example.pharma.Notification.VO.NotificationVO;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "MyFirebaseMsgingService";

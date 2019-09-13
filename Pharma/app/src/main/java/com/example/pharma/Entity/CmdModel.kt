@@ -5,17 +5,15 @@ import android.util.Base64
 import android.view.View
 import androidx.lifecycle.ViewModel
 import com.example.pharma.ListAdapter.CommandeAdapter
- import com.example.pharma.Retrofit.RetrofitService
+ import com.example.pharma.Retrofits.Retrofit.RetrofitService
 import kotlinx.android.synthetic.main.fragment_commande.*
 import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
  import okhttp3.ResponseBody
  import org.jetbrains.anko.toast
-import org.joda.time.LocalDateTime
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.ByteArrayOutputStream
-import android.R.attr.bitmap
 import android.content.Context
 import android.widget.TextView
 import android.widget.Toast

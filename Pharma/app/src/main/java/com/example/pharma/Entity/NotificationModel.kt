@@ -3,7 +3,7 @@ package com.example.pharma.Entity
 import android.app.Activity
 import android.view.View
 import androidx.lifecycle.ViewModel
- import com.example.pharma.Retrofit.RetrofitService
+ import com.example.pharma.Retrofits.Retrofit.RetrofitService
 import kotlinx.android.synthetic.main.fragment_commande.*
 import okhttp3.ResponseBody
 import org.jetbrains.anko.toast

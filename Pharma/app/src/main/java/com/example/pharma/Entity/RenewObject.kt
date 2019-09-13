@@ -1,4 +1,4 @@
-package com.example.pharma
+package com.example.pharma.Entity
 
 data class RenewObject (
     var nss: Int,

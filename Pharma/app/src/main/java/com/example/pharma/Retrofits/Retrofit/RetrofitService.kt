@@ -1,4 +1,4 @@
-package com.example.pharma.Retrofit
+package com.example.pharma.Retrofits.Retrofit
 
 import com.example.pharma.Entity.baseUrl
 import com.example.pharma.Entity.baseUrl1

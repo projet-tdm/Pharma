@@ -1,4 +1,4 @@
-package com.example.pharma.UsersRetrofit
+package com.example.pharma.Retrofits.UsersRetrofit
 
 
 import com.example.pharma.Entity.*

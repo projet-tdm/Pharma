@@ -6,7 +6,7 @@ import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModel
 import com.example.pharma.ListAdapter.CustomAdapterPharmacie
 import com.example.pharma.R
-import com.example.pharma.Retrofit.RetrofitService
+import com.example.pharma.Retrofits.Retrofit.RetrofitService
 import com.example.pharma.RoomDataBase.RoomService
 import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import kotlinx.android.synthetic.main.fragment_pharmacies.*

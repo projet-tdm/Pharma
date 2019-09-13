@@ -1,8 +1,8 @@
-package com.example.pharma.UsersRetrofit
+package com.example.pharma.Retrofits.UsersRetrofit
 
 import com.example.pharma.Entity.Device
-import com.example.pharma.RenewObject
-import com.example.pharma.User
+import com.example.pharma.Entity.RenewObject
+import com.example.pharma.Entity.User
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

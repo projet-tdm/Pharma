@@ -1,4 +1,4 @@
-package com.example.pharma.Retrofit
+package com.example.pharma.Retrofits.Retrofit
 
 import com.example.pharma.Entity.*
 import okhttp3.ResponseBody

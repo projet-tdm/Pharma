@@ -41,7 +41,7 @@
 
                 android:background="@drawable/custom_edittext" android:layout_marginTop="15sp"
         />
-        <com.google.android.material.button.MaterialButton
+        <Button
                 style="@style/buttonStyle"
                 android:text="@string/lan"
                 android:layout_width="match_parent"
