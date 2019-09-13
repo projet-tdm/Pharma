@@ -37,6 +37,8 @@ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.runOnUiThread
 import java.lang.Exception
+import com.example.pharma.Entity.*
+
 
 
 class CommandeFragment : Fragment() {
@@ -47,8 +49,8 @@ class CommandeFragment : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
-        val  API_GET_TOKEN = "http://a5809f95.ngrok.io/client_token"
-        val  API_CHECKOUT = "http://a5809f95.ngrok.io/checkout"
+        val  API_GET_TOKEN = paymentURL+"/client_token"
+        val  API_CHECKOUT = paymentURL+"/checkout"
         val REQUEST_CODE:Int = 7777
 
     }

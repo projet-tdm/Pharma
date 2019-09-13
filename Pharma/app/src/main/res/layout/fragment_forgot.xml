@@ -36,7 +36,7 @@
                     style="@style/editTextStyle" android:id="@+id/phone_EditText"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
                 style="@style/buttonStyle"
                 android:text="@string/forgot_btn"
                 android:layout_width="match_parent"
