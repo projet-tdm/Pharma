@@ -27,6 +27,7 @@ import com.braintreepayments.api.dropin.DropInResult
 import com.example.pharma.Entity.CmdModel
 import com.example.pharma.Entity.Commande
 import com.example.pharma.Entity.NotificationModel
+import com.example.pharma.ListAdapter.CommandeAdapter
 import com.google.android.material.chip.Chip
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.TextHttpResponseHandler
@@ -37,6 +38,10 @@ import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
 import org.jetbrains.anko.support.v4.ctx
 import org.jetbrains.anko.support.v4.runOnUiThread
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class CommandeFragment : Fragment() {
@@ -48,8 +53,8 @@ class CommandeFragment : Fragment() {
 
     companion object{
 
-        val  API_GET_TOKEN = "http://3798b577.ngrok.io/client_token"
-        val  API_CHECKOUT = "http://3798b577.ngrok.io/checkout"
+        val  API_GET_TOKEN = "http://ca64c3ab.ngrok.io/client_token"
+        val  API_CHECKOUT = "http://ca64c3ab.ngrok.io/checkout"
 
         val REQUEST_CODE:Int = 7777
 
@@ -165,7 +170,46 @@ class CommandeFragment : Fragment() {
         val notifModel = ViewModelProviders.of(activity!!).get(NotificationModel::class.java)
 
         notifModel.loadData(activity!!,nss)
+        chip3.setOnClickListener {
+            var ls:ArrayList<Commande>?= ArrayList()
+            for (e in cmdModel.list!!)
+            {
+                when(e.etat)
+                {"A"->ls!!.add(e)}
 
+            }
+            listcmd.adapter = CommandeAdapter(activity!!, ls!!,this)
+        }
+        chip4.setOnClickListener {
+            var ls:ArrayList<Commande>?= ArrayList()
+            for (e in cmdModel.list!!)
+            {
+                when(e.etat)
+                {"T"->ls!!.add(e)}
+
+            }
+            listcmd.adapter = CommandeAdapter(activity!!, ls!!,this)
+        }
+        chip.setOnClickListener {
+            var ls:ArrayList<Commande>?= ArrayList()
+            for (e in cmdModel.list!!)
+            {
+                when(e.etat)
+                {"C"->ls!!.add(e)}
+
+            }
+            listcmd.adapter = CommandeAdapter(activity!!, ls!!,this)
+        }
+        chip5.setOnClickListener {
+            var ls:ArrayList<Commande>?= ArrayList()
+            for (e in cmdModel.list!!)
+            {
+                when(e.etat)
+                {"P"->ls!!.add(e)}
+
+            }
+            listcmd.adapter = CommandeAdapter(activity!!, ls!!,this)
+        }
 
 
 

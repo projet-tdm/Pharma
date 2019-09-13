@@ -45,8 +45,8 @@ class detailNotif : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
-        val  API_GET_TOKEN = "http://3798b577.ngrok.io/client_token"
-        val  API_CHECKOUT = "http://3798b577.ngrok.io/checkout"
+        val  API_GET_TOKEN = "http://ca64c3ab.ngrok.io/client_token"
+        val  API_CHECKOUT = "http://ca64c3ab.ngrok.io/checkout"
         val REQUEST_CODE:Int = 7777
 
     }
@@ -179,7 +179,7 @@ class detailNotif : Fragment() {
         textView27.text="Date de lancement "+notif?.dateL
         textView30.text="Notification "+notif?.id.toString()
         val mnt="33"
-        textView29.text="Montant"+mnt+" DA"
+        textView29.text="Montant "+mnt+" DA"
 
          getToken()
 

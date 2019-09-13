@@ -22,6 +22,8 @@ import android.widget.Toast
 import com.example.pharma.CommandeFragment
 import com.example.pharma.R
 import com.google.android.material.chip.Chip
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class CmdModel: ViewModel() {
@@ -83,13 +85,21 @@ class CmdModel: ViewModel() {
         }
         return Bitmap.createScaledBitmap(image, width, height, true)
     }
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
 
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
      fun addCommande(myBitmap: Bitmap,act: Activity,nss:Int,name:String) {
 
 
         var filestr =ImageToString(myBitmap)
-        val current = LocalDateTime.now()
-        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.android_material_design_spinner1.selectedItem.toString(),current.toString(),nss,name)
+          val date = getCurrentDateTime()
+         val dateInString = date.toString("yyyy/MM/dd HH:mm:ss")
+        val call = RetrofitService.endpointUpload.addCmd(filestr,"C",act.android_material_design_spinner1.selectedItem.toString(),dateInString,nss,name)
         call.enqueue(object : Callback<MyResponse>{
             override fun onResponse(call: Call<MyResponse> ?, response: Response<MyResponse> ?) {
                 if (response?.isSuccessful!!) {
