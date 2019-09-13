@@ -41,10 +41,11 @@
 
                 android:background="@drawable/custom_edittext" android:layout_marginTop="15sp"
         />
-        <com.google.android.material.button.MaterialButton
+        <Button
                 style="@style/buttonStyle"
                 android:text="@string/lan"
                 android:layout_width="match_parent"
+                android:background="@drawable/custom_button"
                 android:layout_height="wrap_content" android:id="@+id/commander"/>
         <ProgressBar
                 style="?android:attr/progressBarStyleHorizontal"

@@ -3,6 +3,7 @@ package com.example.pharma
 
 import android.Manifest
 import android.content.Context
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
@@ -26,8 +27,6 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
 import com.example.pharma.Entity.Pharmacie
 import com.example.pharma.Retrofit.RetrofitService
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -43,6 +42,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import kotlinx.android.synthetic.main.fragment_info.*
 import com.example.pharma.Entity.MyModel
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
+import com.google.android.gms.tasks.Task
 import org.jetbrains.anko.support.v4.act
 import org.jetbrains.anko.toast
 
@@ -166,6 +168,5 @@ class mapFragment : Fragment(),OnMapReadyCallback, GoogleMap.OnInfoWindowClickLi
             .findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
     }
-
 
 }

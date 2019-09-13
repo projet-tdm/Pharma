@@ -34,7 +34,7 @@
     <TextView
             android:text="@string/cmd"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/gothamrounded_mediumitalic"
+            android:fontFamily="@font/gothamroundedbook_21018"
             android:layout_height="wrap_content"
             android:id="@+id/textView" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
             android:layout_width="31dp"
             android:layout_height="28dp"
             android:id="@+id/add"
-            android:background="@drawable/ic_add_shopping_cart_black_24dp"
+            android:background="@drawable/ic_home"
             android:backgroundTint="@color/titre"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="@+id/toolbar2" android:layout_marginEnd="8dp"
