@@ -5,7 +5,8 @@
                                                    android:orientation="vertical"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent" android:id="@+id/linearLayout6"
-                                                   android:background="#FFFFFF">
+                                                   android:background="#FFFFFF"
+                                                   >
 
     <ImageView
             android:layout_width="51dp"
@@ -13,15 +14,16 @@
             android:id="@+id/imageView5"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="4dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
             android:layout_height="0dp" android:id="@+id/textView18"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toEndOf="@+id/imageView5"
+            android:layout_marginTop="8dp" app:layout_constraintStart_toEndOf="@+id/imageView5"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.027"/>
+            app:layout_constraintHorizontal_bias="0.027" android:textColor="@color/colorPrimaryText"/>
     <TextView
             android:text="TextView"
             android:layout_width="wrap_content"
@@ -29,5 +31,6 @@
             android:id="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/textView18"
             android:layout_marginTop="4dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
-            android:textSize="8sp"/>
+            android:textSize="8sp" android:textColor="@color/colorPrimaryText" android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.016"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

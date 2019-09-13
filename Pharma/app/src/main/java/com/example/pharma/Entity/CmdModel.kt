@@ -29,7 +29,7 @@ class CmdModel: ViewModel() {
 
     var list:List<Commande>? = null
     var frag:CommandeFragment? = null
-
+    var cmd:Commande?=null
 
     fun loadData(act: Activity,nss:Int) {
         act.progressBar2.visibility = View.VISIBLE
@@ -144,9 +144,49 @@ class CmdModel: ViewModel() {
             }
 
             override fun onFailure(call: Call<ResponseBody> ?, t: Throwable?) {
-                act.toast("Une erreur s'est produite")
+                act.toast("Une erreur s'est produite 2")
             }
         })
+    }
+    fun payerNotif(act: Context,id:Int,curentCmd:Commande,view:View)
+    {
+        val call = RetrofitService.endpoint.payerCmd(id)
+        call.enqueue(object : Callback<ResponseBody>{
+            override fun onResponse(call: Call<ResponseBody> ?, response: Response<ResponseBody> ?) {
+                if (response?.isSuccessful!!) {
+
+                    Toast.makeText(act, "Transaction Successful", Toast.LENGTH_LONG).show()
+                    curentCmd?.etat = "P"
+                } else {
+                    act.toast("Une erreur s'est produite1")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody> ?, t: Throwable?) {
+                act.toast("Une erreur s'est produite 2")
+            }
+        })
+    }
+    fun getCommande(act: Activity,id:Int)
+    {
+
+        val call = RetrofitService.endpoint.getCommande(id)
+        call.enqueue(object : Callback<List<Commande>>{
+            override fun onResponse(call: Call<List<Commande>> ?, response: Response<List<Commande>> ?) {
+                if (response?.isSuccessful!!) {
+                    cmd=response?.body()?.first()
+                } else {
+                    act.toast("Une erreur s'est produite1")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Commande>> ?, t: Throwable?) {
+                act.toast("Une erreur s'est produite cmd")
+            }
+
+
+        })
+
     }
 
 }

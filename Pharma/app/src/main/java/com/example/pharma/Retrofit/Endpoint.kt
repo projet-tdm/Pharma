@@ -28,4 +28,8 @@ interface Endpoint {
     fun getPharmaciesGarde(): Call<ArrayList<Pharmacie>>
     @GET("getNotifications/{user}")
     fun getNotif(@Path("user") user:Int): Call<List<Notification>>
+    @GET("getCommande/{numero}")
+    fun getCommande(@Path("numero") numero:Int): Call<List<Commande>>
+    @PUT("setVue/{id}")
+    fun setVue(@Path("id") id:Int):Call<ResponseBody>
 }

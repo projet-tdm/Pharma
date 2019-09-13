@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.media.app.NotificationCompat;
 import com.example.pharma.CommandeFragment;
+import com.example.pharma.MainActivity;
 import com.example.pharma.R;
 import com.example.pharma.SecondActivity;
 import com.example.pharma.Utils.NotificationUtils;
@@ -35,19 +36,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
        Log.d(TAG, "From: " + remoteMessage.getFrom());
 
-        // Check if message contains a data payload.
-     /*   if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-            Map<String, String> data = remoteMessage.getData();
-            handleData(data);
-
-        } else*/ if (remoteMessage.getNotification() != null) {
+   if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
             SharedPreferences pref = getSharedPreferences("fileName", Context.MODE_PRIVATE);
 
            if(pref.getBoolean("connected", false))
-            {handleNotification(remoteMessage.getNotification());}
-        }// Check if message contains a notification payload.
+            {   SharedPreferences pref1 = getSharedPreferences("fileName",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref1.edit();
+                editor.putInt("decision", 0);
+                editor.putInt("notif",52);
+                editor.commit();
+
+                handleNotification(remoteMessage.getNotification());}
+        }
 
     }
 
@@ -58,30 +59,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationVO.setTitle(title);
         notificationVO.setMessage(message);
 
-        Intent resultIntent = new Intent(getApplicationContext(), SecondActivity.class);
+        Intent resultIntent = new Intent(getApplicationContext(), MainActivity.class);
         NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
         notificationUtils.displayNotification(notificationVO, resultIntent);
         notificationUtils.playNotificationSound();
     }
 
-    private void handleData(Map<String, String> data) {
-        String title = data.get(TITLE);
-        String message = data.get(MESSAGE);
-        String iconUrl = data.get(IMAGE);
-        String action = data.get(ACTION);
-        String actionDestination = data.get(ACTION_DESTINATION);
-        NotificationVO notificationVO = new NotificationVO();
-        notificationVO.setTitle(title);
-        notificationVO.setMessage(message);
-        notificationVO.setIconUrl(iconUrl);
-        notificationVO.setAction(action);
-        notificationVO.setActionDestination(actionDestination);
 
-        Intent resultIntent = new Intent(getApplicationContext(), CommandeFragment.class);
-
-        NotificationUtils notificationUtils = new NotificationUtils(getApplicationContext());
-        notificationUtils.displayNotification(notificationVO, resultIntent);
-        notificationUtils.playNotificationSound();
-
-    }
 }

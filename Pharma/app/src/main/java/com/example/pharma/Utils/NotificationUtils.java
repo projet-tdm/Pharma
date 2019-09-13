@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.Html;
 import androidx.core.app.NotificationCompat;
+import com.example.pharma.CommandeFragment;
 import com.example.pharma.MainActivity;
 import com.example.pharma.R;
 import com.example.pharma.SecondActivity;
@@ -42,7 +43,7 @@ public class NotificationUtils {
     public NotificationUtils(Context mContext) {
         this.mContext = mContext;
         //Populate activity map
-         activityMap.put("SecondActivity", SecondActivity.class);
+         activityMap.put("SecondActivity", MainActivity.class);
     }
 
     /**
@@ -68,7 +69,6 @@ public class NotificationUtils {
 
             if (URL.equals(action)) {
                 Intent notificationIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(destination));
-
                 resultPendingIntent = PendingIntent.getActivity(mContext, 0, notificationIntent, 0);
             } else if (ACTIVITY.equals(action) && activityMap.containsKey(destination)) {
                 resultIntent = new Intent(mContext, activityMap.get(destination));

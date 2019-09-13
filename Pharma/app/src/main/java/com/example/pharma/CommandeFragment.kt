@@ -47,8 +47,8 @@ class CommandeFragment : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
-        val  API_GET_TOKEN = "http://de506595.ngrok.io/client_token"
-        val  API_CHECKOUT = "http://de506595.ngrok.io/checkout"
+        val  API_GET_TOKEN = "http://3798b577.ngrok.io/client_token"
+        val  API_CHECKOUT = "http://3798b577.ngrok.io/checkout"
         val REQUEST_CODE:Int = 7777
 
     }
@@ -100,6 +100,9 @@ class CommandeFragment : Fragment() {
 
     private fun sendPayments() {
         val queue = Volley.newRequestQueue(activity)
+
+
+
         val stringRequest = object: StringRequest(Request.Method.POST, API_CHECKOUT,
             Response.Listener { response ->
                 if (response.toString().contains("Successful")){
@@ -158,7 +161,10 @@ class CommandeFragment : Fragment() {
         cmdModel.frag = this
         cmdModel.loadData(activity!!,nss)
         val notifModel = ViewModelProviders.of(activity!!).get(NotificationModel::class.java)
+
         notifModel.loadData(activity!!,nss)
+
+
 
 
 

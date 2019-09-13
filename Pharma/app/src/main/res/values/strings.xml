@@ -16,7 +16,7 @@
     <string name="id_btn">Se connecter</string>
     <string name="id_account_msg">Vous n\'avez pas de compte?</string>
     <string name="id_account_link">\ S\'enregistrer</string>
-
+    <string name="pay">"Cette commande est payée !"</string>
     <string name="account_title">\ S\'enregistrer</string>
     <string name="account_name">Nom</string>
     <string name="account_last_name">Prénom</string>

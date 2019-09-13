@@ -1,25 +1,16 @@
 package com.example.pharma.ListAdapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
-import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onCancel
-import com.bumptech.glide.Glide
-import com.example.pharma.Entity.CmdModel
-import com.example.pharma.Entity.Commande
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
+
 import com.example.pharma.Entity.Notification
-import com.example.pharma.Entity.baseUrl
-import com.example.pharma.R
-import com.google.android.material.chip.Chip
+ import com.example.pharma.R
+
 
 
 
@@ -42,8 +33,9 @@ class NotificationAdapter(val ctx:Context,val data:List<Notification>):BaseAdapt
             view = LayoutInflater.from(ctx).inflate(R.layout.notiflayout,parent,false)
             val textView = view?.findViewById(R.id.textView18) as TextView
             val textView3 = view.findViewById(R.id.textView19) as TextView
+            var lin:ConstraintLayout= view.findViewById(R.id.linearLayout6) as ConstraintLayout
 
-            holder = ViewHolder(textView, textView3)
+            holder = ViewHolder(textView, textView3,lin)
             view.setTag(holder)
         }
         else
@@ -52,9 +44,10 @@ class NotificationAdapter(val ctx:Context,val data:List<Notification>):BaseAdapt
 
 
         }
-        holder.textView.setText("La Commande "+data.get(i).commande.toString() + "est traitée")
+        holder.textView.setText("La Commande "+data.get(i).commande.toString() + " est traitée")
 
         holder.textView3.setText(data.get(i).date)
+        if (data.get(i).vue==1) holder.lin.setBackgroundColor(Color.parseColor("#F0F8FF"))
 
 
 
@@ -64,5 +57,5 @@ class NotificationAdapter(val ctx:Context,val data:List<Notification>):BaseAdapt
     }
 
 
-    private class ViewHolder(val textView:TextView,val textView3:TextView)
+    private class ViewHolder(val textView:TextView,val textView3:TextView,var lin:ConstraintLayout)
 }
