@@ -18,6 +18,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
             app:titleMarginTop="8dp"/>
+    <ImageView
+            android:src="@drawable/ic_box"
+            android:layout_width="200dp"
+            android:layout_height="200dp" android:id="@+id/order"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/en_cours" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/listcmd" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"/>
     <ListView
             android:layout_width="0dp"
             android:layout_height="0dp"
