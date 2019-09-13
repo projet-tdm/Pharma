@@ -16,7 +16,7 @@
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="1.0"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/searchView"/>
 
     <androidx.appcompat.widget.Toolbar
             android:layout_width="417dp"
@@ -42,28 +42,27 @@
             android:textColor="@color/titre" android:textSize="24sp"/>
     <SearchView
             android:id="@+id/searchView"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:searchIcon="@drawable/ic_search_black_24dp"
             android:searchHintIcon="@color/titre"
-            android:background="@color/colorPrimaryTint"
-            android:backgroundTint="@color/colorLightGrey" android:queryBackground="@color/colorPrimaryTint"
-            android:submitBackground="@color/colorPrimaryTint"
+            android:iconifiedByDefault="false"
             android:scrollbarSize="@dimen/bottom_text_size"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/button6"
-            app:layout_constraintTop_toTopOf="@+id/toolbar" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar" app:layout_constraintVertical_bias="1.0"/>
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="64dp" app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent" android:background="@android:color/white"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <ProgressBar
             style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:id="@+id/progressBar" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/listpharmacie"
             app:layout_constraintEnd_toEndOf="@+id/listpharmacie"
             app:layout_constraintStart_toStartOf="@+id/listpharmacie" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:visibility="invisible"/>
+            app:layout_constraintBottom_toBottomOf="parent" android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"/>
     <Button
             android:layout_width="37dp"
             android:layout_height="32dp"

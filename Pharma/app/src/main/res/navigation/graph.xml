@@ -76,5 +76,13 @@
     <fragment android:id="@+id/paymentFragment" android:name="com.example.pharma.PaymentFragment"
               android:label="fragment_payment" tools:layout="@layout/fragment_payment"/>
     <fragment android:id="@+id/notifications" android:name="com.example.pharma.Notifications"
-              android:label="fragment_notifications" tools:layout="@layout/fragment_notifications"/>
+              android:label="fragment_notifications" tools:layout="@layout/fragment_notifications">
+        <action android:id="@+id/action_notifications_to_detailNotif" app:destination="@id/detailNotif"/>
+    </fragment>
+    <fragment android:id="@+id/detailNotif" android:name="com.example.pharma.detailNotif"
+              android:label="fragment_detail_notif" tools:layout="@layout/fragment_detail_notif">
+        <action android:id="@+id/action_detailNotif_to_notifications" app:destination="@id/notifications"/>
+    </fragment>
+    <activity android:id="@+id/secondActivity" android:name="com.example.pharma.SecondActivity"
+              android:label="activity_second" tools:layout="@layout/activity_second"/>
 </navigation>

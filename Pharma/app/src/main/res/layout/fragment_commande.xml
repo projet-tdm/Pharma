@@ -10,13 +10,14 @@
                                                    android:id="@+id/frameLayout3">
     <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
-            android:layout_height="46dp"
+            android:layout_height="52dp"
             android:background="@color/colorPrimaryTint"
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize"
             android:id="@+id/toolbar2" android:visibility="visible" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintHorizontal_bias="0.0"
+    />
     <ListView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textView" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:textColor="@color/titre" android:textSize="18sp" android:layout_marginStart="8dp"/>
+            android:textColor="@color/titre" android:textSize="24sp" android:layout_marginStart="8dp"/>
 
     <TextView android:id="@+id/trait_e"
               android:fontFamily="@font/gothamrounded_lightitalic"
@@ -72,7 +73,7 @@
               android:layout_marginStart="28dp"
               app:layout_constraintTop_toBottomOf="@+id/chip3"/>
     <Button
-            android:layout_width="34dp"
+            android:layout_width="31dp"
             android:layout_height="28dp"
             android:id="@+id/add"
             android:background="@drawable/ic_add_shopping_cart_black_24dp"
@@ -120,16 +121,16 @@
             android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent" android:visibility="gone"/>
     <Button
-            android:layout_width="37dp"
-            android:layout_height="32dp"
+            android:layout_width="32dp"
+            android:layout_height="28dp"
             android:id="@+id/button5"
             app:layout_constraintTop_toTopOf="@+id/toolbar2" app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
             android:background="@drawable/exit"
             app:layout_constraintEnd_toEndOf="@+id/toolbar2" android:layout_marginEnd="16dp"
             app:layout_constraintVertical_bias="0.285"/>
     <Button
-            android:layout_width="40dp"
-            android:layout_height="28dp"
+            android:layout_width="33dp"
+            android:layout_height="26dp"
             android:id="@+id/notif" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toStartOf="@+id/button5"
             android:layout_marginEnd="20dp"
@@ -150,5 +151,15 @@
             android:textColor="@color/lignecmd" android:fontFamily="@font/gothamrounded_light"
             app:layout_constraintTop_toBottomOf="@+id/chip5"
             android:layout_marginEnd="36dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nbn" android:textSize="10sp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:background="@color/titre"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/notif"
+            app:layout_constraintBottom_toTopOf="@+id/notif" app:layout_constraintEnd_toEndOf="@+id/notif"
+            android:layout_marginStart="20dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
 

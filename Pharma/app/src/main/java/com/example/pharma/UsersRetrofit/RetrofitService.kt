@@ -10,6 +10,7 @@ object RetrofitService {
         Retrofit.Builder().baseUrl(twilioURL).
             addConverterFactory(GsonConverterFactory.create()).build().create(Endpoint::class.java)
     }
+
     val usersEndpoint : UsersEndpoint by lazy {
         Retrofit.Builder().baseUrl(usersURL).
             addConverterFactory(GsonConverterFactory.create()).

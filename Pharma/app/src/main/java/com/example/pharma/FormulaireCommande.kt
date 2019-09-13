@@ -1,18 +1,24 @@
 package com.example.pharma
 
 
+import android.Manifest
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
  import android.os.Bundle
  import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
   import android.widget.Toast
- import androidx.navigation.findNavController
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onCancel
 import kotlinx.android.synthetic.main.fragment_formulaire_commande.*
@@ -39,9 +45,39 @@ class FormulaireCommande : Fragment() {
         return inflater.inflate(R.layout.fragment_formulaire_commande, container, false)
 
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        btn.setOnClickListener { showPictureDialog() }
+        btn.setOnClickListener {
+
+
+            // Here, thisActivity is the current activity
+            if (ContextCompat.checkSelfPermission(activity!!,
+                    Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+                // Permission is not granted
+                // Should we show an explanation?
+                if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!,
+                        Manifest.permission.CAMERA)) {
+                    // Show an explanation to the user *asynchronously* -- don't block
+                    // this thread waiting for the user's response! After the user
+                    // sees the explanation, try again to request the permission.
+                } else {
+                    // No explanation needed, we can request the permission.
+                    ActivityCompat.requestPermissions(activity!!,
+                        arrayOf(Manifest.permission.CAMERA),
+                        101)
+
+                    // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                    // app-defined int constant. The callback method gets the
+                    // result of the request.
+                }
+            } else {
+                 showPictureDialog()
+            }
+
+        }
         val model = ViewModelProviders.of(activity!!).get(MyModel::class.java)
 
         // If the list of cities is null, load the list from DB
@@ -74,6 +110,7 @@ class FormulaireCommande : Fragment() {
 
 
     }
+
     private fun showPictureDialog() {
         val pictureDialog = AlertDialog.Builder(activity!!)
         pictureDialog.setTitle("Choisir une action")
@@ -133,12 +170,44 @@ class FormulaireCommande : Fragment() {
         }
         else if (requestCode == CAMERA)
         {
-             bitmap = data!!.extras!!.get("data") as Bitmap
-            val uri=data.data
-            name=uri.path.substringAfterLast("/")
-            toast("file "+name)
-            input.setImageBitmap(bitmap)
+            if (data != null)
+            {
+                 try {
+                    bitmap = data.extras!!.get("data") as Bitmap
+                     name = (0..100000).random().toString()+".jpg"
+                    toast("file " + name)
+                    input.setImageBitmap(bitmap)
+                }
+                catch (e: IOException) {
+                    e.printStackTrace()
+                    Toast.makeText(activity!!, "Failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
          }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                             permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            101 -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return
+            }
+
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            else -> {
+                // Ignore all other requests.
+            }
+        }
     }
 
 

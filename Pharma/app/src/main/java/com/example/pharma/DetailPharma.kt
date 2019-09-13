@@ -1,14 +1,18 @@
 package com.example.pharma
 
 
+import android.Manifest
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 import kotlinx.android.synthetic.main.fragment_detail_pharma.*
 import androidx.lifecycle.ViewModelProviders
@@ -91,6 +95,7 @@ class DetailPharma : Fragment() {
     private fun goToMap (lat:Double,lng:Double)
     {
 
+
         val pharma="Pharmacie"
         val gmmIntentUri = Uri.parse("geo:0,0?q=$lat,$lng($pharma)")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -100,10 +105,55 @@ class DetailPharma : Fragment() {
     }
     private fun makeCall (id:String )
     {
-        val callIntent = Intent(Intent.ACTION_CALL)
-        callIntent.data = Uri.parse("tel:" + id)//change the number
-        startActivity(callIntent)
+        if (ContextCompat.checkSelfPermission(activity!!,
+                Manifest.permission.CALL_PHONE)
+            != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!,
+                    Manifest.permission.CAMERA)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(activity!!,
+                    arrayOf(Manifest.permission.CAMERA),
+                    101)
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            val callIntent = Intent(Intent.ACTION_CALL)
+            callIntent.data = Uri.parse("tel:" + id)//change the number
+            startActivity(callIntent)
+        }
+
 
     }
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>, grantResults: IntArray) {
+        when (requestCode) {
+            101 -> {
+                // If request is cancelled, the result arrays are empty.
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return
+            }
 
+            // Add other 'when' lines to check for other
+            // permissions this app might request.
+            else -> {
+                // Ignore all other requests.
+            }
+        }
+    }
 }

@@ -7,11 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.core.content.edit
 
 import androidx.lifecycle.ViewModelProviders
-  import com.example.pharma.Entity.NotificationModel
+import androidx.navigation.findNavController
+import com.example.pharma.Entity.NotificationModel
 import com.example.pharma.ListAdapter.NotificationAdapter
  import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotlinx.android.synthetic.main.fragment_pharmacies.*
 
 
 class Notifications : Fragment() {
@@ -32,5 +36,18 @@ class Notifications : Fragment() {
         val notifModel = ViewModelProviders.of(activity!!).get(NotificationModel::class.java)
         notifModel.loadData(activity!!,nss)
         listnotif.adapter=NotificationAdapter(activity!!,notifModel.list!!)
+        listnotif.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
+
+            val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+            pref.edit {
+                putInt("decision"
+                    ,1)
+                putInt("notif"
+                    ,position)
+            }
+            view?.findNavController()?.navigate(R.id.action_notifications_to_detailNotif)
+
+
+        }
     }
 }

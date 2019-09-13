@@ -18,24 +18,25 @@
         <TextView
                 android:text="@string/comm"
                 android:layout_width="wrap_content"
-                android:layout_height="41sp" android:id="@+id/cmd"
+                android:layout_height="53dp" android:id="@+id/cmd"
                 android:textSize="24sp" android:textColor="@color/titre"
                 android:fontFamily="@font/gothamrounded_medium"/>
         <pl.utkala.searchablespinner.SearchableSpinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:id="@+id/android_material_design_spinner1"
 
                 app:closeText="Quitter"
                 app:dialogTitle="Trouver une Pharmacie"/>
 
         <ImageButton
-                android:src="@android:drawable/ic_menu_upload"
+                android:src="@drawable/ic_file_upload_black_24dp"
+                android:background="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/btn"/>
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="156dp"
+                android:layout_height="142dp"
                 android:id="@+id/input"
 
                 android:background="@drawable/custom_edittext" android:layout_marginTop="15sp"

@@ -102,6 +102,9 @@ class CommandeFragment : Fragment() {
 
     private fun sendPayments() {
         val queue = Volley.newRequestQueue(activity)
+
+
+
         val stringRequest = object: StringRequest(Request.Method.POST, API_CHECKOUT,
             Response.Listener { response ->
                 if (response.toString().contains("Successful")){
@@ -160,7 +163,10 @@ class CommandeFragment : Fragment() {
         cmdModel.frag = this
         cmdModel.loadData(activity!!,nss)
         val notifModel = ViewModelProviders.of(activity!!).get(NotificationModel::class.java)
+
         notifModel.loadData(activity!!,nss)
+
+
 
 
 
