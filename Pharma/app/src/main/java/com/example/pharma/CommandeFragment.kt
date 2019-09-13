@@ -63,13 +63,14 @@ class CommandeFragment : Fragment() {
         val REQUEST_CODE:Int = 7777
 
     }
-    private fun getToken() {
+    fun getToken(cmd:Commande,view: View) {
         val androidClient = AsyncHttpClient()
         androidClient.get(API_GET_TOKEN,object : TextHttpResponseHandler(){
 
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseString: String?) {
                 runOnUiThread {
                     token = responseString!!
+                    doTransaction(cmd,view)
                 }
             }
             override fun onFailure(
@@ -149,6 +150,7 @@ class CommandeFragment : Fragment() {
         }
         queue.add(stringRequest)
     }
+
      fun doTransaction(cmd:Commande,view: View){
          curentCmd = cmd
          curentCmdView = view
@@ -165,7 +167,6 @@ class CommandeFragment : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getToken()
         val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
         val nss = pref.getInt("nss", 0)
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)

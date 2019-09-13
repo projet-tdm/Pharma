@@ -69,7 +69,7 @@ class CommandeAdapter(val ctx:Context,val data:List<Commande>,frag:CommandeFragm
                     mnt.text = "1500"
                   payer.setOnClickListener {
                       commandFragment.amount = mnt.text.toString()
-                      commandFragment.doTransaction(data.get(i),view)
+                      commandFragment.getToken(data.get(i),view)
                   }
             }
             "C"-> {holder.chip.setChipBackgroundColorResource(com.example.pharma.R.color.cours)
