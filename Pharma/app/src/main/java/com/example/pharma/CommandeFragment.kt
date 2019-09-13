@@ -47,8 +47,10 @@ class CommandeFragment : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
+
         val  API_GET_TOKEN = "http://3798b577.ngrok.io/client_token"
         val  API_CHECKOUT = "http://3798b577.ngrok.io/checkout"
+
         val REQUEST_CODE:Int = 7777
 
     }

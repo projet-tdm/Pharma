@@ -11,7 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
-
+import java.security.MessageDigest
 
 
 class MainActivity : AppCompatActivity() {
@@ -76,5 +76,6 @@ class MainActivity : AppCompatActivity() {
         bottomNav.visibility = View.GONE
 
     }
+
 
 }
