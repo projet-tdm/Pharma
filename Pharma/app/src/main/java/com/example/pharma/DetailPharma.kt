@@ -112,14 +112,14 @@ class DetailPharma : Fragment() {
             // Permission is not granted
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(activity!!,
-                    Manifest.permission.CAMERA)) {
+                    Manifest.permission.CALL_PHONE)) {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
             } else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(activity!!,
-                    arrayOf(Manifest.permission.CAMERA),
+                    arrayOf(Manifest.permission.CALL_PHONE),
                     101)
 
                 // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an

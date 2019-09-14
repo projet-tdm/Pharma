@@ -180,7 +180,7 @@ class CommandeFragment : Fragment() {
         notifModel.loadData(activity!!,nss)
         chip3.setOnClickListener {
             var ls:ArrayList<Commande>?= ArrayList()
-            if(cmdModel.list!!.isEmpty()) order.visibility = View.VISIBLE
+           // if(cmdModel.list!!.isEmpty()) order.visibility = View.VISIBLE
             for (e in cmdModel.list!!)
             {
                 when(e.etat)
