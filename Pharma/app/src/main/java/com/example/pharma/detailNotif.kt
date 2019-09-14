@@ -40,18 +40,20 @@ class detailNotif : Fragment() {
     var curentCmdView : View? = null
 
     companion object{
-        val  API_GET_TOKEN = paymentURL +"/client_token"
+
+        val  API_GET_TOKEN = paymentURL+"/client_token"
         val  API_CHECKOUT = paymentURL+"/checkout"
         val REQUEST_CODE:Int = 7777
 
     }
-    private fun getToken() {
+    fun getToken(cmd:Commande,view: View) {
         val androidClient = AsyncHttpClient()
         androidClient.get(API_GET_TOKEN,object : TextHttpResponseHandler(){
 
             override fun onSuccess(statusCode: Int, headers: Array<out Header>?, responseString: String?) {
                 runOnUiThread {
                     token = responseString!!
+                    doTransaction(cmd,view)
                 }
             }
             override fun onFailure(
@@ -101,7 +103,6 @@ class detailNotif : Fragment() {
                 if (response.toString().contains("Successful")){
                     var cmd : Commande = curentCmd!!
                     var view : View = curentCmdView!!
-
                     val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
                     cmdModel.payerNotif(ctx,curentCmd!!.numero,cmd,view)
                 }
@@ -132,12 +133,14 @@ class detailNotif : Fragment() {
         }
         queue.add(stringRequest)
     }
-    fun doTransaction(cmd: Commande?, view: View){
+
+    fun doTransaction(cmd:Commande,view: View){
         curentCmd = cmd
         curentCmdView = view
         val dropInRequest = DropInRequest().clientToken(token)
         startActivityForResult(dropInRequest.getIntent(activity),REQUEST_CODE)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -176,7 +179,6 @@ class detailNotif : Fragment() {
         val mnt="33"
         textView29.text="Montant "+mnt+" DA"
 
-         getToken()
 
         val cmdModel = ViewModelProviders.of(activity!!).get(CmdModel::class.java)
         button10.setOnClickListener {
@@ -185,18 +187,17 @@ class detailNotif : Fragment() {
         button9.setOnClickListener {
             amount1 = mnt.toString()
             cmdModel.getCommande(activity!!,notif?.commande!!)
-            toast(""+cmdModel.cmd?.etat)
-            val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
+             val pref = activity!!.getSharedPreferences("fileName", Context.MODE_PRIVATE)
             val nss = pref.getInt("nss", 0)
             when (cmdModel.cmd?.etat) {
-                "T"->{doTransaction(cmdModel.cmd,view!!)
+                "T"->{getToken(cmdModel.cmd!!,view!!)
                     view?.findNavController()?.navigate(R.id.action_detailNotif_to_notifications)}
 
                 "P"-> {
                 MaterialDialog(context!!).show {
                     message(R.string.pay)
                     positiveButton(R.string.ok) {
-                        view?.findNavController()?.navigate(R.id.action_detailNotif_to_notifications)}
+                        //view?.findNavController()?.navigate(R.id.action_detailNotif_to_notifications)}
 
                 }
 
@@ -206,4 +207,4 @@ class detailNotif : Fragment() {
         }
 
      }
-}}
+}}}

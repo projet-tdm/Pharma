@@ -40,7 +40,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 editor.commit();
 
                 handleNotification(remoteMessage.getNotification());}
-        }
+            }
 
     }
 

@@ -10,8 +10,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/listnotif" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar3"/>
+            android:id="@+id/listnotif"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/toolbar3"/>
     <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
             android:layout_height="52dp"
@@ -30,4 +30,12 @@
             android:textSize="24sp" android:textColor="@color/titre"
             app:layout_constraintStart_toStartOf="@+id/toolbar3" app:layout_constraintHorizontal_bias="0.03"
             android:layout_marginStart="8dp" android:fontFamily="@font/gothamrounded_book"/>
+    <ImageView
+            android:src="@drawable/ic_sentiment_dissatisfied_black_24dp"
+            android:layout_width="62dp"
+            android:layout_height="75dp"
+            android:id="@+id/imageView7" android:layout_marginTop="272dp"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar3" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.498"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

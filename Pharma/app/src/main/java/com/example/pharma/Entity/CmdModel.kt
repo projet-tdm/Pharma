@@ -33,6 +33,7 @@ class CmdModel: ViewModel() {
 
     fun loadData(act: Activity,nss:Int) {
         act.progressBar2.visibility = View.VISIBLE
+        act.imageView6.visibility= View.INVISIBLE
         getCommandesFromRemote(act,nss)
 
     }
@@ -44,8 +45,11 @@ class CmdModel: ViewModel() {
                 act.progressBar2.visibility = View.GONE
                 if (response?.isSuccessful!!) {
                     list = response?.body()
+                    if(list?.size==0 || list==null) act.imageView6.visibility= View.VISIBLE
+
                     act.progressBar2.visibility = View.GONE
                     act.listcmd.adapter = CommandeAdapter(act, list!!,frag!!)
+
                   } else {
                     act.toast("Une erreur s'est produite1")
                 }

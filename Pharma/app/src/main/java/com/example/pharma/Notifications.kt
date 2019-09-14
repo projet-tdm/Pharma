@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.pharma.Entity.NotificationModel
 import com.example.pharma.ListAdapter.NotificationAdapter
- import kotlinx.android.synthetic.main.fragment_notifications.*
+import kotlinx.android.synthetic.main.fragment_commande.*
+import kotlinx.android.synthetic.main.fragment_notifications.*
 import kotlinx.android.synthetic.main.fragment_pharmacies.*
 
 
@@ -34,7 +35,9 @@ class Notifications : Fragment() {
         val nss = pref.getInt("nss", 0)
 
         val notifModel = ViewModelProviders.of(activity!!).get(NotificationModel::class.java)
+         imageView7.visibility= View.INVISIBLE
         notifModel.loadData(activity!!,nss)
+        if(notifModel.list?.size==0 || notifModel.list==null) imageView7.visibility= View.VISIBLE
         listnotif.adapter=NotificationAdapter(activity!!,notifModel.list!!)
         listnotif.onItemClickListener = AdapterView.OnItemClickListener { _, view, position, _ ->
 
